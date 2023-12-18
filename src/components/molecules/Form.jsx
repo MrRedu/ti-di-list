@@ -20,7 +20,6 @@ export const Form = ({ toDo, handleChange, handleSubmit }) => {
       >
         Add
       </button>
-      {/* <span>{JSON.stringify(toDo)}</span> */}
     </form>
   )
 }
