@@ -8,14 +8,15 @@
     /* Font */
     --f-main: 'Atkinson Hyperlegible', sans-serif;
 
-    --c-amber-300: #fcd34d;
-    --c-amber-400: #fbbf24;
-    /* amber/400 is us main color */
-    --c-amber-500: #eab308;
-    --c-amber-600: #f59e0b;
-
     --c-whywhite-300: #ececec;
     --c-neutral-800: #121212;
+
+    --c-teal-200: #99f6e4;
+    --c-teal-800: #115e59;
+}
+
+html.dark {
+    background: var(--c-neutral-800);
 }
 
 body {
