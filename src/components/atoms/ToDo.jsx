@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 
-import { Trash2, ChevronDown } from 'lucide-react'
+import { Trash2, ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 
 const ButtonAction = ({ children, onClick }) => {
@@ -29,7 +29,13 @@ export const ToDo = ({
   }
 
   return (
-    <li className="bg-slate-400 p-2 ">
+    <li
+      className={`${
+        isCompleted
+          ? 'bg-gray-200 dark:bg-gray-600'
+          : 'bg-teal-200 dark:bg-teal-800'
+      } p-2 rounded`}
+    >
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <input
@@ -44,7 +50,9 @@ export const ToDo = ({
           />
           <label
             htmlFor={id}
-            className={`${isCompleted ? 'line-through' : ''}`}
+            className={`${
+              isCompleted ? 'line-through' : ''
+            } dark:text-gray-100`}
           >
             {children}
           </label>
@@ -55,7 +63,7 @@ export const ToDo = ({
             <Trash2 />
           </ButtonAction>
           <ButtonAction onClick={handleIsOpen}>
-            <ChevronDown />
+            {isOpen ? <ChevronUp /> : <ChevronDown />}
           </ButtonAction>
         </div>
       </div>

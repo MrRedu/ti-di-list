@@ -15,7 +15,7 @@ export const ToDoList = () => {
 
   return (
     <>
-      <div className="bg-neutral-800 rounded flex flex-col p-4 gap-4">
+      <div className="bg-teal-50 rounded flex flex-col p-4 gap-4 dark:bg-neutral-800">
         <Form
           toDo={toDo}
           handleChange={handleChangeToDo}

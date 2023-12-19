@@ -9,7 +9,7 @@ export const Input = ({ type, name, id, placeholder, value, onChange }) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className="border border-gray-300 p-2 rounded"
+      className="border border-gray-300 p-2 rounded w-full"
     />
   )
 }
