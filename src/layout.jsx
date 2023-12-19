@@ -8,10 +8,13 @@ export const Layout = ({ children }) => {
     <>
       <header
         className="
-        p-2 bg-teal-400 flex items-center justify-between text-white text-lg"
+        p-2 items-center justify-between text-white text-lg
+        
+        bg-teal-400
+        dark:bg-teal-950
+        "
       >
         <h1>TEXT 👀</h1>
-        <ThemeSwitcher />
       </header>
       <Toaster
         toastOptions={{
@@ -24,10 +27,18 @@ export const Layout = ({ children }) => {
           },
         }}
         theme="light"
+        position="bottom-center"
       />
-      <main className="p-2 ">{children}</main>
-      <footer className="bg-teal-400 h-12 flex items-center justify-center text-white text-lg">
-        FOOTER
+      <main className="p-2">{children}</main>
+      <footer
+        className="p-2 flex items-center justify-between text-white text-lg
+      
+      bg-teal-400
+      dark:bg-teal-950
+      "
+      >
+        <span>FOOTER</span>
+        <ThemeSwitcher />
       </footer>
     </>
   )

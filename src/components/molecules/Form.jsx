@@ -17,8 +17,15 @@ export const Form = ({ toDo, handleChange, handleSubmit }) => {
         type="submit"
         onClick={handleSubmit}
         className="
-        border p-2 rounded shadow-md font-bold text-gray-100 bg-teal-500
-         dark:border-teal-800"
+        p-2 rounded shadow-sm font-bold border
+
+        text-gray-100 
+
+        bg-teal-500
+        dark:bg-teal-800
+
+        border-teal-100
+        dark:border-teal-800"
       >
         Add
       </button>
