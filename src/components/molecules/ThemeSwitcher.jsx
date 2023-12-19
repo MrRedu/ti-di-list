@@ -9,8 +9,7 @@ const Button = ({ children, onClick, className }) => {
     <button
       onClick={onClick}
       className={`
-        font-bold 
-        p-2 
+        p-2
         ${className}`}
     >
       {children}
@@ -85,21 +84,26 @@ export const ThemeSwitcher = () => {
 
   return (
     <>
-      <div className="flex gap-2 bg-teal-600 p-2 rounded-full">
+      <div
+        className="
+      flex gap-2 p-1 rounded-full border
+      
+      border-teal-800
+      dark:border-gray-400
+      "
+      >
         {options.map(({ name, icon, handleTheme }) => (
           <Button
             key={name}
             onClick={handleTheme}
             className="
             rounded-full
-          text-gray-100
-          bg-indigo-400
-          hover:bg-indigo-700
+
+          text-neutral-600
+          hover:text-gray-800
           
-          dark:text-gray-800
-          dark:bg-blue-100
-          dark:hover:bg-indigo-600
-          dark:hover:text-gray-200
+          dark:text-gray-300
+          dark:hover:text-gray-100
           "
           >
             {icon}
