@@ -19,6 +19,7 @@ export const ToDo = ({
   children,
   handleDelete,
   id,
+  tags,
   handleIsCompleted,
   isCompleted,
 }) => {
@@ -102,7 +103,13 @@ export const ToDo = ({
         </div>
       </div>
       <div className={`${isOpen ? 'block' : 'hidden'}`}>
-        <span>{`[tag, tag, tag, tag, tag]`}</span>
+        <ul>
+          {tags.map(tag => (
+            <>
+              <li key={tag}>{tag}</li>
+            </>
+          ))}
+        </ul>
       </div>
     </li>
   )
@@ -112,6 +119,7 @@ ToDo.propTypes = {
   children: propTypes.node.isRequired,
   handleDelete: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
+  tags: propTypes.arrayOf(propTypes.string).isRequired,
   handleIsCompleted: propTypes.func.isRequired,
   isCompleted: propTypes.bool.isRequired,
 }

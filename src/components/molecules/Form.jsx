@@ -1,23 +1,34 @@
 import propTypes from 'prop-types'
 
 import { Input } from '../atoms/Input'
+import { Hashtags } from './Hashtags'
 
-export const Form = ({ toDo, handleChange, handleSubmit }) => {
+export const Form = ({ toDo, handleChange, handleSubmit, handleAddTag }) => {
   return (
-    <form action="" onSubmit={handleSubmit} className="flex gap-2">
+    <form action="" onSubmit={handleSubmit} className="grid gap-2 grid-cols-2">
       <Input
         type={'text'}
         name={'title'}
         id={'title'}
-        placeholder={'Add a new ToDo'}
+        placeholder={'Title'}
         value={toDo.title || ''}
         onChange={handleChange}
       />
+      <Input
+        type={'text'}
+        name={'description'}
+        id={'description'}
+        placeholder={'Add a short description'}
+        value={toDo.description || ''}
+        onChange={handleChange}
+      />
+      <Hashtags handleAddTag={handleAddTag} />
+
       <button
         type="submit"
         onClick={handleSubmit}
         className="
-        p-2 rounded shadow-sm font-bold border
+        p-2 rounded shadow-sm font-bold border w-fill
 
         text-gray-100 
 
@@ -27,7 +38,7 @@ export const Form = ({ toDo, handleChange, handleSubmit }) => {
         border-teal-100
         dark:border-teal-800"
       >
-        Add
+        Add ToDo
       </button>
     </form>
   )
@@ -37,4 +48,5 @@ Form.propTypes = {
   toDo: propTypes.object,
   handleChange: propTypes.func,
   handleSubmit: propTypes.func,
+  handleAddTag: propTypes.func,
 }
