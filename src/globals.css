@@ -22,10 +22,21 @@
     --c-teal-800: #115e59;
     --c-teal-900: #134e4a;
     --c-teal-950: #042f2e;
+
+
+    /* 
+    'c-softblue-100': '#75B0F1',
+    'c-bluegray-600': '#444C63',
+    
+    */
+    --c-gray-400: #393840;
+    --c-gray-700: #35343C;
+
+    --c-template-gray-300: #4D4C52;
 }
 
 html.dark {
-    background: var(--c-neutral-800);
+    background: var(--c-gray-700);
 }
 
 body {

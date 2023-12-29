@@ -27,7 +27,7 @@ export const Layout = ({ children }) => {
           },
         }}
         theme="light"
-        position="bottom-center"
+        position="top-center"
       />
       <main className="p-2">{children}</main>
       <footer
