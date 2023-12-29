@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import {
   MessageSquareHeart,
   HelpCircle,
@@ -7,6 +8,7 @@ import {
 } from 'lucide-react'
 
 import { Overlay } from '../atoms/Overlay'
+import { useOutsideClick } from '../../hooks/useOutsideClick'
 
 const ACTIONS = [
   {
@@ -31,10 +33,15 @@ const ACTIONS = [
   },
 ]
 
-export const Settings = () => {
+export const Settings = ({ handleShowSettings }) => {
+  const refSettingsMenu = useOutsideClick(() => {
+    handleShowSettings()
+  })
+
   return (
     <Overlay>
       <div
+        ref={refSettingsMenu}
         className="
         h-full w-3/5
         p-4
@@ -54,4 +61,8 @@ export const Settings = () => {
       </div>
     </Overlay>
   )
+}
+
+Settings.propTypes = {
+  handleShowSettings: propTypes.func.isRequired,
 }

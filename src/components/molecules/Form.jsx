@@ -4,6 +4,7 @@ import { Input } from '../atoms/Input'
 
 import { SendHorizontal, ListOrdered } from 'lucide-react'
 import { Overlay } from '../atoms/Overlay'
+import { useOutsideClick } from '../../hooks/useOutsideClick'
 
 const ACTIONS = [
   // {
@@ -44,20 +45,19 @@ const Actions = () => {
   )
 }
 
-export const Form = ({
-  toDo,
-  handleChange,
-  handleSubmit,
-  handleAddTag,
-  handleShowForm,
-}) => {
+export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
+  const refForm = useOutsideClick(() => {
+    handleShowForm()
+  })
+
   return (
-    <Overlay onClick={handleShowForm}>
+    <Overlay position={'justify-center items-end'}>
       <form
+        ref={refForm}
         action=""
         onSubmit={e => {
           handleSubmit(e)
-          handleShowForm(e)
+          handleShowForm()
         }}
         className="
         w-full h-auto p-4
@@ -81,7 +81,7 @@ export const Form = ({
           type="submit"
           onClick={e => {
             handleSubmit(e)
-            handleShowForm(e)
+            handleShowForm()
           }}
           className="
         p-2 rounded-full w-fill 
@@ -100,14 +100,6 @@ export const Form = ({
         >
           <SendHorizontal className="rotate-270" />
         </button>
-
-        <button
-          onClick={handleShowForm}
-          type="button"
-          className="bg-red-800 p-4"
-        >
-          CLOSE
-        </button>
       </form>
     </Overlay>
   )
@@ -117,6 +109,5 @@ Form.propTypes = {
   toDo: propTypes.object,
   handleChange: propTypes.func,
   handleSubmit: propTypes.func,
-  handleAddTag: propTypes.func,
   handleShowForm: propTypes.func,
 }

@@ -1,3 +1,4 @@
+import propTypes from 'prop-types'
 import { Menu as MenuIcon } from 'lucide-react'
 import { ThemeSwitcher } from '../../molecules/ThemeSwitcher'
 
@@ -5,7 +6,7 @@ const PusherFooter = () => {
   return <div className="h-16" />
 }
 
-export const Footer = () => {
+export const Footer = ({ handleShowSettings }) => {
   return (
     <>
       <PusherFooter />
@@ -19,11 +20,14 @@ export const Footer = () => {
   dark:bg-c-template-gray-300
   "
       >
-        <button type="button">
+        <button type="button" onClick={handleShowSettings}>
           <MenuIcon />
         </button>
         <ThemeSwitcher />
       </footer>
     </>
   )
+}
+Footer.propTypes = {
+  handleShowSettings: propTypes.func.isRequired,
 }

@@ -23,16 +23,16 @@ export function UseToDos() {
     }))
   }
 
-  const handleAddTag = (e, tag) => {
-    e.preventDefault()
+  // const handleAddTag = (e, tag) => {
+  //   e.preventDefault()
 
-    if (tag.trim().length < 3) return
+  //   if (tag.trim().length < 3) return
 
-    setToDo(prev => ({
-      ...prev,
-      tags: [...prev.tags, tag],
-    }))
-  }
+  //   setToDo(prev => ({
+  //     ...prev,
+  //     tags: [...prev.tags, tag],
+  //   }))
+  // }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -84,6 +84,5 @@ export function UseToDos() {
     handleSubmit,
     handleDelete,
     handleIsCompleted,
-    handleAddTag,
   }
 }

@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { UseToDos } from '../../hooks/UseToDos'
+import { UseToDos } from '../../hooks/useToDos'
 import { ToDo } from '../atoms/ToDo'
 import { Form } from '../molecules/Form'
 import { ToDos } from '../molecules/ToDos'
 import { AddToDo } from '../atoms/AddToDo'
-// import { ToDoView } from './ToDoPreview'
 
 export const ToDoList = () => {
   const {
@@ -14,12 +13,11 @@ export const ToDoList = () => {
     handleSubmit,
     handleDelete,
     handleIsCompleted,
-    handleAddTag,
   } = UseToDos()
 
   const [showForm, setShowForm] = useState(false)
 
-  const handleShowForm = e => {
+  const handleShowForm = () => {
     setShowForm(!showForm)
   }
 
@@ -32,7 +30,6 @@ export const ToDoList = () => {
             toDo={toDo}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            handleAddTag={handleAddTag}
             handleShowForm={handleShowForm}
           />
         )}
@@ -52,6 +49,7 @@ export const ToDoList = () => {
           </ToDos>
         )}
       </div>
+
     </>
   )
 }
