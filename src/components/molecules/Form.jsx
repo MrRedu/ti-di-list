@@ -55,7 +55,10 @@ export const Form = ({
     <Overlay onClick={handleShowForm}>
       <form
         action=""
-        onSubmit={handleSubmit}
+        onSubmit={e => {
+          handleSubmit(e)
+          handleShowForm(e)
+        }}
         className="
         w-full h-auto p-4
         align-self-end relative
@@ -76,7 +79,10 @@ export const Form = ({
 
         <button
           type="submit"
-          onClick={handleSubmit}
+          onClick={e => {
+            handleSubmit(e)
+            handleShowForm(e)
+          }}
           className="
         p-2 rounded-full w-fill 
         grid place-content-center
