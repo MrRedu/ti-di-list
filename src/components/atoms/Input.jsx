@@ -1,15 +1,31 @@
 import propTypes from 'prop-types'
 
-export const Input = ({ type, name, id, placeholder, value, onChange }) => {
+export const Input = ({
+  type,
+  name,
+  id,
+  placeholder,
+  value,
+  onChange,
+  inputRef,
+}) => {
   return (
     <input
+      ref={inputRef}
       type={type}
       name={name}
       id={id}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className="border border-gray-300 p-2 rounded w-full"
+      className="
+      p-3 rounded w-full
+      text-gray-100
+      
+      focus:outline-none
+      dark:bg-c-template-gray-400
+
+      "
     />
   )
 }
@@ -21,4 +37,5 @@ Input.propTypes = {
   placeholder: propTypes.string,
   value: propTypes.string,
   onChange: propTypes.func,
+  inputRef: propTypes.any,
 }
