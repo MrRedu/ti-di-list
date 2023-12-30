@@ -5,6 +5,7 @@ import { Input } from '../atoms/Input'
 import { SendHorizontal, ListOrdered } from 'lucide-react'
 import { Overlay } from '../atoms/Overlay'
 import { useOutsideClick } from '../../hooks/useOutsideClick'
+import { useEffect, useRef } from 'react'
 
 const ACTIONS = [
   // {
@@ -50,6 +51,12 @@ export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
     handleShowForm()
   })
 
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
   return (
     <Overlay position={'justify-center items-end'}>
       <form
@@ -68,6 +75,7 @@ export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
         dark:bg-c-gray-700"
       >
         <Input
+          inputRef={inputRef}
           type={'text'}
           name={'title'}
           id={'title'}

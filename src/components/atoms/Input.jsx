@@ -1,8 +1,17 @@
 import propTypes from 'prop-types'
 
-export const Input = ({ type, name, id, placeholder, value, onChange }) => {
+export const Input = ({
+  type,
+  name,
+  id,
+  placeholder,
+  value,
+  onChange,
+  inputRef,
+}) => {
   return (
     <input
+      ref={inputRef}
       type={type}
       name={name}
       id={id}
@@ -28,4 +37,5 @@ Input.propTypes = {
   placeholder: propTypes.string,
   value: propTypes.string,
   onChange: propTypes.func,
+  inputRef: propTypes.any,
 }

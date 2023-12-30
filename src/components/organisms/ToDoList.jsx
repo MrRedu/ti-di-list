@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { UseToDos } from '../../hooks/useToDos'
 import { ToDo } from '../atoms/ToDo'
 import { Form } from '../molecules/Form'
@@ -20,6 +20,20 @@ export const ToDoList = () => {
   const handleShowForm = () => {
     setShowForm(!showForm)
   }
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.ctrlKey && event.key === 'k') {
+        setShowForm(true)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   return (
     <>
