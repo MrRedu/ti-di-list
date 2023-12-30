@@ -49,7 +49,6 @@ export const ToDoList = () => {
           </ToDos>
         )}
       </div>
-
     </>
   )
 }
