@@ -2,49 +2,11 @@ import propTypes from 'prop-types'
 
 import { Input } from '../atoms/Input'
 
-import { SendHorizontal, ListOrdered } from 'lucide-react'
+import { SendHorizontal } from 'lucide-react'
 import { Overlay } from '../atoms/Overlay'
 import { useOutsideClick } from '../../hooks/useOutsideClick'
 import { useEffect, useRef } from 'react'
-
-const ACTIONS = [
-  // {
-  //   name: 'Date',
-  //   icon: '<Calendar/>',
-  // },
-  {
-    name: 'Sub-task',
-    icon: <ListOrdered className="text-gray-400" />,
-  },
-  // {
-  //   name: 'etc',
-  //   icon: <etc />,
-  // }
-]
-
-const Actions = () => {
-  return (
-    <div className="flex gap-4">
-      <button
-        type="button"
-        className="
-      px-3 rounded-3xl
-
-      text-gray-400
-
-      dark:bg-c-template-gray-400
-      "
-      >
-        {'No category'}
-      </button>
-      {ACTIONS.map(({ name, icon }) => (
-        <button key={name} type="button">
-          {icon}
-        </button>
-      ))}
-    </div>
-  )
-}
+import { Actions } from './Actions'
 
 export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
   const refForm = useOutsideClick(() => {
