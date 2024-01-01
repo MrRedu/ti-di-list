@@ -20,6 +20,8 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+
+    display: none;
 }
 
 .tooltip-container:hover .tooltip {
@@ -40,4 +42,11 @@
 
 .children-container:hover {
     box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+
+@media screen and (min-width: 768px) {
+    .tooltip {
+        display: block;
+    }
+
 }
