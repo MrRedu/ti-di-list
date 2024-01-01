@@ -22,9 +22,13 @@ export const ToDoList = () => {
   }
 
   useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.ctrlKey && event.key === 'k') {
+    const handleKeyDown = e => {
+      if (e.ctrlKey && e.key === 'k') {
         setShowForm(true)
+      }
+
+      if (e.key === 'Escape') {
+        setShowForm(false)
       }
     }
 
