@@ -7,6 +7,7 @@ import { Overlay } from '../atoms/Overlay'
 import { useOutsideClick } from '../../hooks/useOutsideClick'
 import { useEffect, useRef } from 'react'
 import { Actions } from './Actions'
+import { CircleButton } from '../atoms/CircleButton'
 
 export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
   const refForm = useOutsideClick(() => {
@@ -19,15 +20,17 @@ export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
     inputRef.current.focus()
   }, [])
 
+  const handleOnSubmit = e => {
+    handleSubmit(e)
+    handleShowForm()
+  }
+
   return (
     <Overlay position={'justify-center items-end'}>
       <form
         ref={refForm}
         action=""
-        onSubmit={e => {
-          handleSubmit(e)
-          handleShowForm()
-        }}
+        onSubmit={e => handleOnSubmit(e)}
         className="
         w-full h-auto p-4
         align-self-end relative
@@ -47,29 +50,12 @@ export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
         />
         <Actions />
 
-        <button
-          type="submit"
-          onClick={e => {
-            handleSubmit(e)
-            handleShowForm()
-          }}
-          className="
-        p-2 rounded-full w-fill 
-        grid place-content-center
-
-        text-gray-100 
-
-        bg-teal-500
-        dark:bg-teal-800
-
-        border-teal-100
-        dark:border-teal-800
-        
-        absolute bottom-1 right-4
-        "
+        <CircleButton
+          className="absolute bottom-1 right-4"
+          onClick={e => handleOnSubmit(e)}
         >
           <SendHorizontal className="rotate-270" />
-        </button>
+        </CircleButton>
       </form>
     </Overlay>
   )
