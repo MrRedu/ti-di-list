@@ -1,6 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 
 @tailwind base;
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(97, 97, 97, 0.2) rgba(97, 97, 97, 0.2);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(97, 97, 97, 0.2);
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(97, 97, 97, 0.6);
+    border-radius: 8px;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -29,7 +51,7 @@
     */
 
     --c-softblue-100: #75B0F1;
-    
+
     --c-gray-400: #393840;
     --c-gray-700: #35343C;
 
