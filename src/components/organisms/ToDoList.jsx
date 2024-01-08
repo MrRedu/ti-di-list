@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { UseToDos } from '../../hooks/useToDos'
-import { ToDo } from '../atoms/ToDo'
-import { Form } from '../molecules/Form'
-import { ToDos } from '../molecules/ToDos'
-import { CircleButton } from '../atoms/CircleButton'
+import { UseToDos } from '@/hooks/useToDos'
+import { ToDo } from '@/components/atoms/ToDo'
+import { Form } from '@/components/molecules/Form'
+import { ToDos } from '@/components/molecules/ToDos'
+import { CircleButton } from '@/components/atoms/CircleButton'
 import { Plus } from 'lucide-react'
 
 export const ToDoList = () => {

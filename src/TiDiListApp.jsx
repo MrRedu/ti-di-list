@@ -1,7 +1,7 @@
 import { Layout } from './layout'
-import { ToDoList } from './components/organisms/ToDoList'
 import { useState } from 'react'
-import { Settings } from './components/organisms/Settings'
+import { ToDoList } from '@/components/organisms/ToDoList'
+import { Settings } from '@/components/organisms/Settings'
 
 export const TiDiListApp = () => {
   const [showSettings, setShowSettings] = useState(false)
@@ -9,7 +9,7 @@ export const TiDiListApp = () => {
   const handleShowSettings = () => {
     setShowSettings(!showSettings)
   }
-  
+
   return (
     <>
       <Layout handleShowSettings={handleShowSettings}>

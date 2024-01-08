@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 
-import { Input } from '../atoms/Input'
+import { Input } from '@/components/atoms/Input'
 
 import { SendHorizontal, ListOrdered } from 'lucide-react'
 import { Overlay } from '../atoms/Overlay'

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useOutsideClick } from '../../hooks/useOutsideClick'
+import { useOutsideClick } from '@/hooks/useOutsideClick'
 
 const CATEGORIES = [
   { id: 'no-category', name: 'No category' },

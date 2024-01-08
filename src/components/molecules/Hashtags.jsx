@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 
 import { useState } from 'react'
-import { Input } from '../atoms/Input'
+import { Input } from '@/components/atoms/Input'
 
 export const Hashtags = ({ handleAddTag }) => {
   const [tag, setTag] = useState('')

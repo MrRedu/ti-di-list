@@ -1,6 +1,6 @@
 import proTypes from 'prop-types'
 
-import { THEME_SWITCHER_LUCIDE } from '../../libs/lucide'
+import { THEME_SWITCHER_LUCIDE } from '@/libs/lucide'
 import { Laptop, Moon, Sun } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
