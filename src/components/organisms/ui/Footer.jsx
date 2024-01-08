@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 import { Menu as MenuIcon } from 'lucide-react'
-import { ThemeSwitcher } from '../../molecules/ThemeSwitcher'
+import { ThemeSwitcher } from '@/components/molecules/ThemeSwitcher'
 
 const PusherFooter = () => {
   return <div className="h-16" />

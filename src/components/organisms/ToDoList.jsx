@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { UseToDos } from '../../hooks/useToDos'
-import { ToDo } from '../atoms/ToDo'
-import { Form } from '../molecules/Form'
-import { ToDos } from '../molecules/ToDos'
-import { AddToDo } from '../atoms/AddToDo'
+import { UseToDos } from '@/hooks/useToDos'
+import { ToDo } from '@/components/atoms/ToDo'
+import { Form } from '@/components/molecules/Form'
+import { ToDos } from '@/components/molecules/ToDos'
+import { CircleButton } from '@/components/atoms/CircleButton'
+import { Plus } from 'lucide-react'
 
 export const ToDoList = () => {
   const {
@@ -42,7 +43,14 @@ export const ToDoList = () => {
   return (
     <>
       <div className="">
-        <AddToDo onClick={handleShowForm} />
+        <CircleButton
+          className="fixed bottom-20 right-5"
+          onClick={handleShowForm}
+          tooltip="Ctrl + K"
+        >
+          <Plus />
+        </CircleButton>
+
         {showForm && (
           <Form
             toDo={toDo}

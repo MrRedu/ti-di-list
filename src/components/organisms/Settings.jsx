@@ -7,8 +7,8 @@ import {
   Paintbrush,
 } from 'lucide-react'
 
-import { Overlay } from '../atoms/Overlay'
-import { useOutsideClick } from '../../hooks/useOutsideClick'
+import { Overlay } from '@/components/atoms/Overlay'
+import { useOutsideClick } from '@/hooks/useOutsideClick'
 
 const ACTIONS = [
   {
