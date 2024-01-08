@@ -9,6 +9,7 @@ export const TiDiListApp = () => {
   const handleShowSettings = () => {
     setShowSettings(!showSettings)
   }
+  
   return (
     <>
       <Layout handleShowSettings={handleShowSettings}>

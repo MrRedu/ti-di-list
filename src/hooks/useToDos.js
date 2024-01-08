@@ -5,7 +5,11 @@ const toDoInitialState = {
   id: '',
   title: '',
   description: '',
-  tags: [],
+  // category: '', //'no-category'
+  //  subTasks: [
+    // { id: self.crypto.randomUUID(), subTask: '' },
+  //  ],
+  // tags: [],
   isCompleted: false,
 }
 
@@ -42,8 +46,8 @@ export function UseToDos() {
       return toast.error('Please enter at least 3 characters')
     }
 
-    setToDos([
-      ...toDos,
+    setToDos(prev => [
+      ...prev,
       {
         id: self.crypto.randomUUID(),
         title,

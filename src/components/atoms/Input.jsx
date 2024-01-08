@@ -21,6 +21,8 @@ export const Input = ({
       className="
       p-3 rounded w-full
       text-gray-100
+
+      placeholder:text-gray-300
       
       focus:outline-none
       dark:bg-c-template-gray-400
