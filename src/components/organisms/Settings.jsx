@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 
 import { Overlay } from '@/components/atoms/Overlay'
-import { useOutsideClick } from '@/components/hooks/useOutsideClick'
+import { useOutsideClick } from '@/hooks/useOutsideClick'
 
 const ACTIONS = [
   {
