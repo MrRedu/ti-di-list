@@ -1,7 +1,6 @@
 import propTypes from 'prop-types'
-import { Tooltip } from './Tooltip/Tooltip'
 
-export const CircleButton = ({ onClick, children, tooltip, className }) => {
+export const CircleButton = ({ onClick, children, className }) => {
   return (
     <button
       type="button"
@@ -16,13 +15,12 @@ export const CircleButton = ({ onClick, children, tooltip, className }) => {
           `}
       onClick={onClick}
     >
-      <Tooltip text={tooltip}>{children}</Tooltip>
+      {children}
     </button>
   )
 }
 CircleButton.propTypes = {
   onClick: propTypes.func.isRequired,
   children: propTypes.node.isRequired,
-  tooltip: propTypes.string,
   className: propTypes.string,
 }
