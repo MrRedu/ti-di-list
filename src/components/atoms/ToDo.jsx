@@ -2,7 +2,6 @@ import propTypes from 'prop-types'
 import { InputCheckBox } from './InputCheckBox'
 import { ViewToDo } from '../molecules/ViewToDo'
 import { useState } from 'react'
-import { Overlay } from './Overlay'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 
@@ -62,17 +61,15 @@ export const ToDo = ({
         </div>
       </li>
       {showEdit && (
-        <Overlay>
-          <ViewToDo
-            id={id}
-            viewToDoRef={viewToDoRef}
-            title={title}
-            category={category}
-            subTasks={subTasks}
-            isCompleted={isCompleted}
-            handleDelete={handleDelete}
-          />
-        </Overlay>
+        <ViewToDo
+          id={id}
+          viewToDoRef={viewToDoRef}
+          title={title}
+          category={category}
+          subTasks={subTasks}
+          isCompleted={isCompleted}
+          handleDelete={handleDelete}
+        />
       )}
     </>
   )

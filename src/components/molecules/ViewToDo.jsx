@@ -15,9 +15,13 @@ export const ViewToDo = ({
         ref={viewToDoRef}
         className="
       flex flex-col gap-2 p-4 h-auto 
-      fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+      fixed top-20 left-20 right-20 bottom-20
       
-      bg-amber-200"
+      text-gray-100
+
+      bg-c-gray-700
+      bg-amber-400/50
+      "
       >
         <h3>{title}</h3>
         {category && <span className="">{category}</span>}

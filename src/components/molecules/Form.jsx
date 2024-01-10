@@ -54,10 +54,10 @@ export const Form = ({
       <Input
         key={subTasks.length}
         type={'text'}
-        name={''}
-        id={''}
+        // name={'sub-task'}
+        // id={'sub-task'}
         placeholder={'Input sub-task here'}
-        // value={}
+        // value={toDo.subTasks[subTasks.length].subTask || ''}
         // onChange={handleChange}
       />,
     ])

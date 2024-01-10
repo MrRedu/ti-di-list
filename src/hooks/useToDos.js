@@ -48,12 +48,12 @@ export function UseToDos() {
         subTasks: [
           {
             id: self.crypto.randomUUID(),
-            title: '1. Sub Task',
+            subTask: '1. Sub Task',
             isCompleted: false,
           },
           {
             id: self.crypto.randomUUID(),
-            title: '2. Sub Task',
+            subTask: '2. Sub Task',
             isCompleted: true,
           },
         ],
