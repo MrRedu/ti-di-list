@@ -117,4 +117,5 @@ Form.propTypes = {
   handleChange: propTypes.func,
   handleSubmit: propTypes.func,
   handleShowForm: propTypes.func,
+  handleSetCategory: propTypes.func,
 }

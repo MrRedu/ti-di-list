@@ -2,6 +2,7 @@ import propTypes from 'prop-types'
 
 export const ViewToDo = ({
   id,
+  viewToDoRef,
   title,
   category,
   isCompleted,
@@ -9,27 +10,23 @@ export const ViewToDo = ({
   handleDelete,
 }) => {
   return (
-
-
-    
     <>
       <div
+        ref={viewToDoRef}
         className="
       flex flex-col gap-2 p-4 h-auto 
       fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
       
       bg-amber-200"
       >
-        <p>{id}</p>
         <h3>{title}</h3>
-        <p>{category}</p>
-        <p>{isCompleted}</p>
-        <p>subTasks</p>
-        {/* <ul>
-        {subTasks.map(subTask => (
-          <li key={subTask.id}>{subTask.subTask}</li>
-        ))}
-      </ul> */}
+        {category && <span className="">{category}</span>}
+        {/* <span>{`${isCompleted ? 'Completed' : 'Not Completed'}`}</span> */}
+        <ul>
+          {subTasks.map(subTask => (
+            <li key={subTask.id}>{subTask.title}</li>
+          ))}
+        </ul>
         <button type="button" onClick={() => handleDelete(id)}>
           Delete
         </button>
@@ -40,6 +37,7 @@ export const ViewToDo = ({
 
 ViewToDo.propTypes = {
   id: propTypes.string,
+  viewToDoRef: propTypes.any,
   title: propTypes.string,
   category: propTypes.string,
   isCompleted: propTypes.bool,
