@@ -14,6 +14,7 @@ export const ToDoList = () => {
     handleSubmit,
     handleDelete,
     handleIsCompleted,
+    handleSetCategory,
   } = UseToDos()
 
   const [showForm, setShowForm] = useState(false)
@@ -57,6 +58,7 @@ export const ToDoList = () => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             handleShowForm={handleShowForm}
+            handleSetCategory={handleSetCategory}
           />
         )}
 
@@ -68,9 +70,7 @@ export const ToDoList = () => {
                 handleDelete={handleDelete}
                 handleIsCompleted={handleIsCompleted}
                 {...todo}
-              >
-                {todo.title}
-              </ToDo>
+              />
             ))}
           </ToDos>
         )}

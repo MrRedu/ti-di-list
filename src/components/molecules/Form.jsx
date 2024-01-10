@@ -24,7 +24,13 @@ const ACTIONS = [
   // }
 ]
 
-export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
+export const Form = ({
+  toDo,
+  handleChange,
+  handleSubmit,
+  handleShowForm,
+  handleSetCategory,
+}) => {
   const refForm = useOutsideClick(() => {
     handleShowForm()
   })
@@ -89,7 +95,11 @@ export const Form = ({ toDo, handleChange, handleSubmit, handleShowForm }) => {
           </div>
         )}
 
-        <Actions actions={ACTIONS} handleAddSubTask={addSubTask} />
+        <Actions
+          actions={ACTIONS}
+          handleAddSubTask={addSubTask}
+          handleSetCategory={handleSetCategory}
+        />
 
         <CircleButton
           className="absolute bottom-1 right-4"

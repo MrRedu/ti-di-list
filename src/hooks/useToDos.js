@@ -4,13 +4,9 @@ import { toast } from 'sonner'
 const toDoInitialState = {
   id: '',
   title: '',
-  description: '',
-  // category: '', //'no-category'
-  //  subTasks: [
-    // { id: self.crypto.randomUUID(), subTask: '' },
-  //  ],
-  // tags: [],
+  category: '',
   isCompleted: false,
+  subTasks: [{ id: '', subTask: '', isCompleted: false }],
 }
 
 export function UseToDos() {
@@ -27,20 +23,16 @@ export function UseToDos() {
     }))
   }
 
-  // const handleAddTag = (e, tag) => {
-  //   e.preventDefault()
-
-  //   if (tag.trim().length < 3) return
-
-  //   setToDo(prev => ({
-  //     ...prev,
-  //     tags: [...prev.tags, tag],
-  //   }))
-  // }
+  const handleSetCategory = category => {
+    setToDo(prev => ({
+      ...prev,
+      category,
+    }))
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
-    const { title, tags } = toDo
+    const { title, category } = toDo
 
     if (title.trim().length < 3) {
       return toast.error('Please enter at least 3 characters')
@@ -51,9 +43,15 @@ export function UseToDos() {
       {
         id: self.crypto.randomUUID(),
         title,
-        description: '',
-        tags,
+        category,
         isCompleted: false,
+        subTasks: [
+          {
+            id: self.crypto.randomUUID(),
+            subTask: '',
+            isCompleted: false,
+          },
+        ],
       },
     ])
 
@@ -88,5 +86,6 @@ export function UseToDos() {
     handleSubmit,
     handleDelete,
     handleIsCompleted,
+    handleSetCategory,
   }
 }
