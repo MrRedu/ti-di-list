@@ -1,49 +1,89 @@
 import propTypes from 'prop-types'
 import { InputCheckBox } from './InputCheckBox'
+import { ViewToDo } from '../molecules/ViewToDo'
+import { useState } from 'react'
+import { Overlay } from './Overlay'
+
+import { useOutsideClick } from '@/hooks/useOutsideClick'
 
 export const ToDo = ({
-  children,
-  // handleDelete,
-  // tags,
   id,
-  handleIsCompleted,
+  title,
+  subTasks,
   isCompleted,
+  category,
+  handleDelete,
+  handleIsCompleted,
 }) => {
+  const [showEdit, setShowEdit] = useState(false)
+  const handleShowEdit = () => {
+    setShowEdit(!showEdit)
+  }
+
+  const viewToDoRef = useOutsideClick(() => {
+    handleShowEdit()
+  })
+
   return (
-    <li
-      className={`${
-        isCompleted
-          ? 'bg-teal-100 dark:bg-c-gray-400 opacity-30'
-          : 'bg-teal-100 dark:bg-c-gray-400'
-      } 
+    <>
+      <li
+        className={`${
+          isCompleted
+            ? 'bg-teal-100 dark:bg-c-gray-400 opacity-30'
+            : 'bg-teal-100 dark:bg-c-gray-400'
+        } 
       p-2 rounded
       shadow-md
-      
+
+      flex items-center gap-2
       `}
-    >
-      <div className="flex justify-between">
-        <div className="flex items-center gap-2">
+      >
+        <div
+          className="
+          flex gap-2
+          w-full"
+          onClick={handleShowEdit}
+        >
           <InputCheckBox handleIsCompleted={handleIsCompleted} id={id} />
 
           <label
             htmlFor={id}
-            className={`${
-              isCompleted ? 'line-through' : ''
-            } dark:text-gray-100`}
+            className={`
+              dark:text-gray-100
+              flex gap-2 items-center
+              
+              ${isCompleted ? 'line-through' : ''} `}
           >
-            {children}
+            <span className="line-clamp-1">{title}</span>
+            {category && (
+              <span className="text-sm text-gray-400">({category})</span>
+            )}
           </label>
         </div>
-      </div>
-    </li>
+      </li>
+      {showEdit && (
+        <Overlay>
+          <ViewToDo
+            id={id}
+            viewToDoRef={viewToDoRef}
+            title={title}
+            category={category}
+            subTasks={subTasks}
+            isCompleted={isCompleted}
+            handleDelete={handleDelete}
+          />
+        </Overlay>
+      )}
+    </>
   )
 }
 
 ToDo.propTypes = {
-  children: propTypes.node.isRequired,
-  handleDelete: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
-  tags: propTypes.arrayOf(propTypes.string).isRequired,
-  handleIsCompleted: propTypes.func.isRequired,
+  title: propTypes.string.isRequired,
+  subTasks: propTypes.array,
+  category: propTypes.string,
   isCompleted: propTypes.bool.isRequired,
+  handleDelete: propTypes.func.isRequired,
+  handleIsCompleted: propTypes.func.isRequired,
 }

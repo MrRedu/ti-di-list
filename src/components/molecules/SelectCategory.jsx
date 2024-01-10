@@ -1,3 +1,5 @@
+import propTypes from 'prop-types'
+
 import { useState } from 'react'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 
@@ -10,7 +12,7 @@ const CATEGORIES = [
   { id: 'birthday', name: 'Birthday' },
 ]
 
-export const SelectCategory = () => {
+export const SelectCategory = ({ handleSetCategory }) => {
   const [showList, setShowList] = useState(false)
   const [text, setText] = useState(CATEGORIES[0].name)
 
@@ -23,6 +25,7 @@ export const SelectCategory = () => {
   })
 
   const handleCategory = category => {
+    handleSetCategory(category)
     setText(category)
   }
 
@@ -86,4 +89,8 @@ export const SelectCategory = () => {
       )}
     </>
   )
+}
+
+SelectCategory.propTypes = {
+  handleSetCategory: propTypes.func,
 }
