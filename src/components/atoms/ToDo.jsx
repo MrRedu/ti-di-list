@@ -1,28 +1,14 @@
 import propTypes from 'prop-types'
 import { InputCheckBox } from './InputCheckBox'
-import { ViewToDo } from '../molecules/ViewToDo'
-import { useState } from 'react'
-
-import { useOutsideClick } from '@/hooks/useOutsideClick'
 
 export const ToDo = ({
   id,
   title,
-  subTasks,
   isCompleted,
   category,
   handleDelete,
   handleIsCompleted,
 }) => {
-  const [showEdit, setShowEdit] = useState(false)
-  const handleShowEdit = () => {
-    setShowEdit(!showEdit)
-  }
-
-  const viewToDoRef = useOutsideClick(() => {
-    handleShowEdit()
-  })
-
   return (
     <>
       <li
@@ -41,36 +27,27 @@ export const ToDo = ({
           className="
           flex gap-2
           w-full"
-          onClick={handleShowEdit}
         >
           <InputCheckBox handleIsCompleted={handleIsCompleted} id={id} />
 
           <label
             htmlFor={id}
-            className={`
+            className="
               dark:text-gray-100
-              flex gap-2 items-center
-              
-              ${isCompleted ? 'line-through' : ''} `}
+              flex flex-col justify-center"
           >
-            <span className="line-clamp-1">{title}</span>
-            {category && (
-              <span className="text-sm text-gray-400">({category})</span>
+            <span
+              className={`line-clamp-1
+            ${isCompleted ? 'line-through' : ''}`}
+            >
+              {title}
+            </span>
+            {!category || category === 'No category' ? null : (
+              <span className="text-sm text-gray-400">{`${category}`}</span>
             )}
           </label>
         </div>
       </li>
-      {showEdit && (
-        <ViewToDo
-          id={id}
-          viewToDoRef={viewToDoRef}
-          title={title}
-          category={category}
-          subTasks={subTasks}
-          isCompleted={isCompleted}
-          handleDelete={handleDelete}
-        />
-      )}
     </>
   )
 }
@@ -78,7 +55,6 @@ export const ToDo = ({
 ToDo.propTypes = {
   id: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
-  subTasks: propTypes.array,
   category: propTypes.string,
   isCompleted: propTypes.bool.isRequired,
   handleDelete: propTypes.func.isRequired,

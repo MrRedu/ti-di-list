@@ -54,10 +54,12 @@ export const SelectCategory = ({ handleSetCategory }) => {
       {showList && (
         <div
           className="
-        absolute -top-44 
+        absolute 
         h-40 w-40
         scroll-smooth overflow-y-auto
         rounded
+
+        outline outline-1 outline-lime-300
 
         dark:bg-c-gray-700"
           ref={refList}
