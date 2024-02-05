@@ -18,6 +18,10 @@ export default {
       rotate: {
         270: '270deg',
       },
+      screens: {
+        'bk-min-420': '420px',
+        // => @media (min-width: 420px) { ... }
+      },
     },
   },
   plugins: [],
