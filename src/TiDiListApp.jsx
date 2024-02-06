@@ -1,8 +1,9 @@
 import { Layout } from './layout'
 import { useState } from 'react'
 
+import { Settings } from '@/components/organisms/ui/Settings'
+import { WeatherWidget } from './components/organisms/WeatherWidget'
 import { ToDoList } from '@/components/organisms/ToDoList'
-import { Settings } from '@/components/organisms/Settings'
 
 export const TiDiListApp = () => {
   const [showSettings, setShowSettings] = useState(false)
@@ -14,7 +15,18 @@ export const TiDiListApp = () => {
   return (
     <>
       <Layout handleShowSettings={handleShowSettings}>
-        <ToDoList />
+        <div
+          className="
+        grid 
+        grid-cols-1 md:grid-cols-2
+        gap-4 md:gap-8
+        
+        "
+        >
+          <WeatherWidget />
+          <ToDoList />
+        </div>
+
         {showSettings && <Settings handleShowSettings={handleShowSettings} />}
       </Layout>
     </>

@@ -6,7 +6,6 @@ const toDoInitialState = {
   title: '',
   category: '',
   isCompleted: false,
-  subTasks: [{ id: '', subTask: '', isCompleted: false }],
 }
 
 export function UseToDos() {
@@ -45,23 +44,14 @@ export function UseToDos() {
         title,
         category,
         isCompleted: false,
-        subTasks: [
-          {
-            id: self.crypto.randomUUID(),
-            title: '1. Sub Task',
-            isCompleted: false,
-          },
-          {
-            id: self.crypto.randomUUID(),
-            title: '2. Sub Task',
-            isCompleted: true,
-          },
-        ],
       },
     ])
 
     toast.success(`${title} added!`)
-    setToDo(toDoInitialState)
+    setToDo(prev => ({
+      ...prev,
+      title: '',
+    }))
   }
 
   const handleDelete = id => {
