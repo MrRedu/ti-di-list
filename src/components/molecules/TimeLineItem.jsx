@@ -8,7 +8,7 @@ export const TimeLineItem = ({ icon, title, description }) => {
         </span>
         <h6 className="block text-base antialiased font-semibold">{title}</h6>
       </div>
-      <div className="flex gap-12 pb-8">
+      <div className="flex gap-12">
         <span className="flex-shrink-0 invisible h-full pointer-events-none"></span>
         <div>
           <p className="block font-normal text-sm text-gray-400">

@@ -12,8 +12,8 @@ const defaultObject = [
 
 export const TimeLine = ({ objects = defaultObject }) => {
   return (
-    <div className="w-full py-4">
-      <ul className="flex flex-col w-full px-4">
+    <div className="w-full py-16">
+      <ul className="flex flex-col w-full px-4 gap-4">
         {objects.map(item => (
           <TimeLineItem
             key={item.id}
