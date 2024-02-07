@@ -10,13 +10,12 @@ export const ToasterSonner = () => {
         className: 'my-toast',
         style: {
           fontFamily: 'var(--f-main)',
-          backgroundColor: 'yellow',
-          border: '1px solid red',
+          backgroundColor: '#fff',
           boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
         },
       }}
       // theme="light"
-      position="top-center"
+      position="bottom-center"
     />
   )
 }

@@ -9,7 +9,7 @@ export const TiDiListApp = () => {
       <Layout>
         <div
           className="
-        flex gap-8
+        flex
         flex-col-reverse md:flex-row
         w-full
 
