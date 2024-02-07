@@ -9,9 +9,10 @@ export const TiDiListApp = () => {
       <Layout>
         <div
           className="
-        flex
+        flex gap-8
         flex-col-reverse md:flex-row
         w-full
+
         "
         >
           <WeatherWidget />

@@ -42,7 +42,7 @@ export const ToDo = ({
               {title}
             </span>
             {category && (
-              <span className="leading-none text-sm text-amber-600">{`${category}`}</span>
+              <span className="leading-none text-sm text-gray-400">{`${category}`}</span>
             )}
           </label>
         </div>
