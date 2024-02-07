@@ -1,33 +1,60 @@
-import propTypes from 'prop-types'
-import { Menu as MenuIcon } from 'lucide-react'
-import { ThemeSwitcher } from '@/components/molecules/ThemeSwitcher'
+import { Github, Code } from 'lucide-react'
 
-const PusherFooter = () => {
-  return <div className="h-16" />
-}
-
-export const Footer = ({ handleShowSettings }) => {
+export const Footer = () => {
   return (
     <>
-      <PusherFooter />
       <footer
-        className="p-2 px-4 
-      fixed bottom-0 left-0 right-0
-      flex items-center justify-between 
-      text-white 
-  
-  bg-teal-400
-  dark:bg-c-template-gray-300
-  "
+        className="
+        w-full h-16 
+        flex items-center justify-center
+        px-4     
+
+        border-t-2 border-blue-gray-200"
       >
-        <button type="button" onClick={handleShowSettings}>
-          <MenuIcon />
-        </button>
-        <ThemeSwitcher />
+        <div
+          className="w-[1280px] flex flex-col items-center justify-between
+        
+        md:flex-row
+        text-sm
+        "
+        >
+          <div className="flex gap-2">
+            <a
+              href="https://github.com/MrRedu"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
+            >
+              <div className="flex items-center gap-1">
+                <span>Dev</span>
+                <Github />
+              </div>
+            </a>
+            <a
+              href="https://github.com/MrRedu/ti-di-list"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
+            >
+              <div className="flex items-center gap-1">
+                <span>Code</span>
+                <Code />
+              </div>
+            </a>
+          </div>
+          <span>
+            Made by{' '}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/MrRedu"
+              className="hover:underline"
+            >
+              MrRedu 🤺
+            </a>
+          </span>
+        </div>
       </footer>
     </>
   )
-}
-Footer.propTypes = {
-  handleShowSettings: propTypes.func.isRequired,
 }

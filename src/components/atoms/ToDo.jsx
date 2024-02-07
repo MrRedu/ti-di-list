@@ -14,10 +14,10 @@ export const ToDo = ({
       <li
         className={`${
           isCompleted
-            ? 'bg-teal-100 dark:bg-c-gray-400 opacity-30'
-            : 'bg-teal-100 dark:bg-c-gray-400'
+            ? 'border border-transparent opacity-30'
+            : 'border border-blue-gray-200'
         } 
-      p-2 rounded
+      rounded
       shadow-md
 
       flex items-center gap-2
@@ -33,17 +33,16 @@ export const ToDo = ({
           <label
             htmlFor={id}
             className="
-              dark:text-gray-100
               flex flex-col justify-center"
           >
             <span
-              className={`line-clamp-1
+              className={`leading-none line-clamp-1
             ${isCompleted ? 'line-through' : ''}`}
             >
               {title}
             </span>
-            {!category || category === 'No category' ? null : (
-              <span className="text-sm text-gray-400">{`${category}`}</span>
+            {category && (
+              <span className="leading-none text-sm text-gray-400">{`${category}`}</span>
             )}
           </label>
         </div>

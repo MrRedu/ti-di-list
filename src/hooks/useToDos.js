@@ -38,13 +38,13 @@ export function UseToDos() {
     }
 
     setToDos(prev => [
-      ...prev,
       {
         id: self.crypto.randomUUID(),
         title,
         category,
         isCompleted: false,
       },
+      ...prev,
     ])
 
     toast.success(`${title} added!`)

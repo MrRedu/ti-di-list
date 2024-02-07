@@ -9,7 +9,7 @@ const Button = ({ children, onClick, className }) => {
     <button
       onClick={onClick}
       className={`
-        p-2
+        p-1
         ${className}`}
     >
       {children}
@@ -17,15 +17,16 @@ const Button = ({ children, onClick, className }) => {
   )
 }
 
-export const ThemeSwitcher = () => {
-  const getSystemTheme = () => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    } else {
-      return 'light'
-    }
-  }
-  const [theme, setTheme] = useState(getSystemTheme)
+export const ThemeSwitcher = ({ className }) => {
+  // const getSystemTheme = () => {
+  //   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  //     return 'dark'
+  //   } else {
+  //     return 'light'
+  //   }
+  // }
+  // const [theme, setTheme] = useState(getSystemTheme)
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -85,27 +86,15 @@ export const ThemeSwitcher = () => {
   return (
     <>
       <div
-        className="
-      flex gap-2 p-1 rounded-full border
+        className={`
+      flex gap-2 p-1 rounded-full 
       
-      border-teal-800
-      dark:border-gray-400
-      "
+      border-2 blue-gray-200
+      ${className}
+      `}
       >
         {options.map(({ name, icon, handleTheme }) => (
-          <Button
-            key={name}
-            onClick={handleTheme}
-            className="
-            rounded-full
-
-          text-neutral-600
-          hover:text-gray-800
-          
-          dark:text-gray-300
-          dark:hover:text-gray-100
-          "
-          >
+          <Button key={name} onClick={handleTheme} className="">
             {icon}
           </Button>
         ))}
