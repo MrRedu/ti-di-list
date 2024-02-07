@@ -43,6 +43,7 @@ export const Form = ({
         type={'text'}
         name={'title'}
         id={'title'}
+        placeholder="New ToDo"
         value={toDo.title || ''}
         onChange={handleChange}
         inputRef={inputRef}

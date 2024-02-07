@@ -3,6 +3,8 @@ import { Section } from '@/components/atoms/ui/Section'
 import { ToDo } from '@/components/atoms/ToDo'
 import { Form } from '@/components/molecules/Form'
 import { ToDos } from '@/components/molecules/ToDos'
+import { TimeLine } from '@/components/molecules/TimeLine'
+import { timeLine } from '@/utils/const'
 
 export const ToDoList = () => {
   const {
@@ -30,7 +32,7 @@ export const ToDoList = () => {
         handleSetCategory={handleSetCategory}
       />
 
-      {toDos.length > 0 && (
+      {toDos.length > 0 ? (
         <ToDos>
           {toDos.map(todo => (
             <ToDo
@@ -41,6 +43,8 @@ export const ToDoList = () => {
             />
           ))}
         </ToDos>
+      ) : (
+        <TimeLine objects={timeLine} />
       )}
     </Section>
   )

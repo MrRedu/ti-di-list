@@ -1,19 +1,14 @@
+import { CATEGORIES } from '@/utils/const'
+import { capitalizeString } from '@/utils/utils'
 import propTypes from 'prop-types'
-const CATEGORIES = [
-  { id: 'category', name: 'Category' },
-  { id: 'personal', name: 'Personal' },
-  { id: 'work', name: 'Work' },
-  { id: 'home', name: 'Home' },
-  { id: 'wishlist', name: 'Wishlist' },
-  { id: 'birthday', name: 'Birthday' },
-]
+
 export const SelectCategory = ({ handleSetCategory }) => {
   const handleCategory = e => {
     if (e.target.value === 'category') {
       handleSetCategory(null)
       return
     }
-    handleSetCategory(e.target.value)
+    handleSetCategory(capitalizeString(e.target.value))
   }
   return (
     <div className="relative h-10 w-full">
