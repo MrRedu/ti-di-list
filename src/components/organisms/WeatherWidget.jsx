@@ -25,15 +25,15 @@ const optionsToTime = {
   minute: 'numeric',
 }
 
-const browserLanguage = navigator.language
+const browserLanguages = navigator.languages
 const FormatDate = (language, date) =>
   new Intl.DateTimeFormat(language, optionsToDate).format(date)
 
 const FormatTime = (language, date) =>
   new Intl.DateTimeFormat(language, optionsToTime).format(date)
 
-const dateFormatted = FormatDate(browserLanguage, today)
-const timeFormatted = FormatTime(browserLanguage, today)
+const dateFormatted = FormatDate(browserLanguages, today)
+const timeFormatted = FormatTime(browserLanguages, today)
 
 export const WeatherWidget = () => {
   const {
@@ -46,7 +46,7 @@ export const WeatherWidget = () => {
   if (!weather) {
     return (
       <div
-        className="w-full h-full flex items-center justify-center"
+        className="w-full min-h-[320px] flex items-center justify-center"
         role="status"
       >
         <svg
@@ -73,7 +73,7 @@ export const WeatherWidget = () => {
   return (
     <>
       {weather && (
-        <Section className="w-full flex flex-col pb-12 md:py-12">
+        <Section className="w-full flex flex-col pb-12 md:py-12 md:justify-center items-center">
           <HelpText className="flex gap-2">
             <span>{dateFormatted}</span>
             <span>{timeFormatted}</span>
