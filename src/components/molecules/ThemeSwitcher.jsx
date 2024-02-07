@@ -17,7 +17,7 @@ const Button = ({ children, onClick, className }) => {
   )
 }
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = ({ className }) => {
   const getSystemTheme = () => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark'
@@ -25,7 +25,8 @@ export const ThemeSwitcher = () => {
       return 'light'
     }
   }
-  const [theme, setTheme] = useState(getSystemTheme)
+  // const [theme, setTheme] = useState(getSystemTheme)
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -85,12 +86,14 @@ export const ThemeSwitcher = () => {
   return (
     <>
       <div
-        className="
+        className={`
       flex gap-2 p-1 rounded-full border
       
       border-teal-800
       dark:border-gray-400
-      "
+
+      ${className}
+      `}
       >
         {options.map(({ name, icon, handleTheme }) => (
           <Button
@@ -99,11 +102,6 @@ export const ThemeSwitcher = () => {
             className="
             rounded-full
 
-          text-neutral-600
-          hover:text-gray-800
-          
-          dark:text-gray-300
-          dark:hover:text-gray-100
           "
           >
             {icon}

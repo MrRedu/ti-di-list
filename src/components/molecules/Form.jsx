@@ -35,26 +35,20 @@ export const Form = ({
       action=""
       onSubmit={e => handleOnSubmit(e)}
       className="
-        w-full h-auto
-        align-self-end relative
-        rounded-tr-2xl rounded-tl-2xl
-        flex flex-col gap-2
-        
-        dark:bg-c-gray-700"
+      w-full h-auto
+      flex flex-col gap-2
+      "
     >
       <Input
         type={'text'}
         name={'title'}
         id={'title'}
-        placeholder={'Input new task here (Ctrl + /)'}
         value={toDo.title || ''}
         onChange={handleChange}
         inputRef={inputRef}
       />
 
-      <div className="flex justify-between">
-        <SelectCategory handleSetCategory={handleSetCategory} />
-      </div>
+      <SelectCategory handleSetCategory={handleSetCategory} />
     </form>
   )
 }

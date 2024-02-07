@@ -16,7 +16,13 @@ export const ToDoList = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4">
+      <div
+        className="
+      flex flex-col
+      w-full 
+      gap-4 p-8 
+      sm:p-12"
+      >
         <Form
           toDo={toDo}
           handleChange={handleChange}

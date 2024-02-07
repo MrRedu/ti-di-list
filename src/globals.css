@@ -29,45 +29,19 @@
 :root {
     /* Font */
     --f-main: 'Atkinson Hyperlegible', sans-serif;
-
-    --c-whywhite-300: #f3f4f6;
-    --c-neutral-800: #262626;
-
-    --c-teal-50: #f0fdfa;
-    --c-teal-100: #ccfbf1;
-    --c-teal-200: #99f6e4;
-    --c-teal-300: #5eead4;
-    --c-teal-400: #2dd4bf;
-    --c-teal-500: #14b8a6;
-    --c-teal-600: #0d9488;
-    --c-teal-700: #0f766e;
-    --c-teal-800: #115e59;
-    --c-teal-900: #134e4a;
-    --c-teal-950: #042f2e;
-
-    /* 
-    'c-bluegray-600': '#444C63',
-    */
-
-    --c-softblue-100: #75B0F1;
-
-    --c-gray-400: #393840;
-    --c-gray-700: #35343C;
-
-    --c-template-gray-300: #4D4C52;
 }
 
 html.dark {
-    background: var(--c-gray-700);
+    background: #121212;
 }
 
 body {
     font-family: var(--f-main);
-    max-width: 1080px;
     margin: 0 auto;
 }
 
 #root {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
