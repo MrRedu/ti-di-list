@@ -1,5 +1,5 @@
+import { DEFAULT_LOCATION } from '@/utils/const'
 import { useState, useEffect } from 'react'
-import { DEFAULT_LOCATION } from '@/libs/const'
 
 export default function useLocation(options) {
   const [loading, setLoading] = useState(true)

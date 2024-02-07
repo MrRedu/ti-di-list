@@ -96,7 +96,7 @@ export const WeatherWidget = () => {
             </p>
           </div>
           <HelperTexts
-            wind={weather.wind.speed}
+            wind={weather.wind}
             humidity={weather.main.humidity}
             pressure={weather.main.pressure}
             visibility={weather.visibility}
