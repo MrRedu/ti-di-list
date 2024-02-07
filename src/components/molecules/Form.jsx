@@ -48,7 +48,22 @@ export const Form = ({
         inputRef={inputRef}
       />
 
-      <SelectCategory handleSetCategory={handleSetCategory} />
+      <div
+        className="
+      flex flex-col gap-2
+      md:flex-row
+      "
+      >
+        <SelectCategory handleSetCategory={handleSetCategory} />
+        <button
+          className="
+          h-10 w-full 
+
+      bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Add
+        </button>
+      </div>
     </form>
   )
 }
