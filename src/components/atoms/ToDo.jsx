@@ -34,7 +34,7 @@ export const ToDo = ({
             htmlFor={id}
             className="
               flex flex-col justify-center
-              line-clamp-1
+              line-clamp-1 
               mr-6
               "
           >

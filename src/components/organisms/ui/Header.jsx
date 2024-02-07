@@ -4,7 +4,7 @@ export const Header = () => {
       className="
     w-full h-16 
     flex items-center justify-center
-    px-4
+    px-8 sm:px-12 
         
     border-b-2 border-blue-gray-200
     "
