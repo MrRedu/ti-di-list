@@ -13,6 +13,8 @@ export const TiDiListApp = () => {
         flex-col-reverse md:flex-row
         w-full
 
+        justify-between
+        min-h-[calc(100dvh-8rem)]
         "
         >
           <WeatherWidget />
