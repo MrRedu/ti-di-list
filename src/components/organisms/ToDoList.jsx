@@ -20,7 +20,7 @@ export const ToDoList = () => {
       className="flex flex-col
       w-full 
       py-12 md:pt-12
-      gap-4 
+      gap-2 
       "
     >
       <Form

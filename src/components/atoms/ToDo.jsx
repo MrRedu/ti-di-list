@@ -25,7 +25,7 @@ export const ToDo = ({
       >
         <div
           className="
-          flex gap-2
+          flex gap-2    
           w-full"
         >
           <InputCheckBox handleIsCompleted={handleIsCompleted} id={id} />
@@ -34,12 +34,16 @@ export const ToDo = ({
             htmlFor={id}
             className="
               flex flex-col justify-center
-              line-clamp-1 
+              w-full
+
+              line-clamp-1
+              
               mr-6
               "
           >
             <span
-              className={`leading-none 
+              className={`leading-none line-clamp-1
+
             ${isCompleted ? 'line-through' : ''}`}
             >
               {title}
