@@ -33,10 +33,13 @@ export const ToDo = ({
           <label
             htmlFor={id}
             className="
-              flex flex-col justify-center"
+              flex flex-col justify-center
+              line-clamp-1
+              mr-6
+              "
           >
             <span
-              className={`leading-none line-clamp-1
+              className={`leading-none 
             ${isCompleted ? 'line-through' : ''}`}
             >
               {title}
