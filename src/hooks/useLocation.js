@@ -1,36 +1,33 @@
 import { useState, useEffect } from 'react'
 import { DEFAULT_LOCATION } from '@/libs/const'
 
-function useLocation() {
-  const [myLocation, setMyLocation] = useState(DEFAULT_LOCATION)
-
-  const successHandler = response => {
-    const { latitude, longitude } = response.coords
-
-    setMyLocation({ latitude, longitude })
-  }
-
-  const errorHandler = error => {
-    console.log(error)
-  }
-
-  const getLocation = async () => {
-    try {
-      const response = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject)
-      })
-
-      successHandler(response)
-    } catch (error) {
-      errorHandler(error)
-    }
-  }
+export default function useLocation(options) {
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState()
+  const [location, setLocation] = useState(DEFAULT_LOCATION)
 
   useEffect(() => {
-    getLocation()
-  }, [])
+    const successHandler = e => {
+      setLoading(false)
+      setError(null)
+      setLocation(e.coords)
+    }
+    const errorHandler = e => {
+      setError(e)
+      setLoading(false)
+    }
+    navigator.geolocation.getCurrentPosition(
+      successHandler,
+      errorHandler,
+      options
+    )
+    const id = navigator.geolocation.watchPosition(
+      successHandler,
+      errorHandler,
+      options
+    )
+    return () => navigator.geolocation.clearWatch(id)
+  }, [options])
 
-  return { myLocation, getLocation }
+  return { loading, error, location }
 }
-
-export default useLocation
