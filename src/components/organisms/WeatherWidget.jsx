@@ -1,16 +1,11 @@
-import {
-  capitalizeString,
-  convertDegreesToCardinalDirection,
-  kelvinToCelsius,
-  metersToKilometers,
-} from '@/utils/utils'
+import { capitalizeString, kelvinToCelsius } from '@/utils/utils'
 
 import useLocation from '@/hooks/useLocation'
 import { useWeather } from '@/hooks/useWeather'
 
-import { Navigation } from 'lucide-react'
 import { HelpText } from '@/components/atoms/HelpText'
 import { Section } from '@/components/atoms/ui/Section'
+import { HelperTexts } from '../molecules/HelperTexts'
 
 const today = new Date()
 
@@ -45,10 +40,7 @@ export const WeatherWidget = () => {
 
   if (!weather) {
     return (
-      <div
-        className="w-full min-h-[320px] flex items-center justify-center"
-        role="status"
-      >
+      <div className="w-full flex items-center justify-center" role="status">
         <svg
           aria-hidden="true"
           className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -79,9 +71,9 @@ export const WeatherWidget = () => {
             <span>{timeFormatted}</span>
           </HelpText>
 
-          <p className="text-2xl font-bold">
+          <h3 className="text-2xl font-bold">
             {weather.name}, {weather.sys.country}
-          </p>
+          </h3>
           <div
             className="
           flex items-center gap-2
@@ -103,28 +95,12 @@ export const WeatherWidget = () => {
               {capitalizeString(weather.weather[0].description)}.
             </p>
           </div>
-          <div
-            className="
-          grid 
-          grid-cols-1 sm:grid-cols-2
-          w-fit gap-x-4
-
-          border-l-2 blue-gray-200
-          pl-4
-          
-          "
-          >
-            <HelpText className="flex items-center gap-1">
-              <Navigation fill="#fff" className="w-4 h-4" />
-              {weather.wind.speed}m/s{' '}
-              {convertDegreesToCardinalDirection(`${weather.wind.deg}`)}
-            </HelpText>
-            <HelpText>Pressure: {weather.main.pressure}hPa</HelpText>
-            <HelpText>Humidity: {weather.main.humidity}%</HelpText>
-            <HelpText>
-              Visibility : {metersToKilometers(`${weather.visibility}`)}km
-            </HelpText>
-          </div>
+          <HelperTexts
+            wind={weather.wind.speed}
+            humidity={weather.main.humidity}
+            pressure={weather.main.pressure}
+            visibility={weather.visibility}
+          />
         </Section>
       )}
     </>
