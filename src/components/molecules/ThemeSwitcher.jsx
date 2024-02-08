@@ -57,6 +57,10 @@ export const ThemeSwitcher = ({ className }) => {
         <Sun
           size={THEME_SWITCHER_LUCIDE.size}
           strokeWidth={THEME_SWITCHER_LUCIDE.strokeWidth}
+          className="
+          text-black
+          dark:text-gray-300
+          "
         />
       ),
       handleTheme: handleLightMode,
@@ -67,6 +71,10 @@ export const ThemeSwitcher = ({ className }) => {
         <Laptop
           size={THEME_SWITCHER_LUCIDE.size}
           strokeWidth={THEME_SWITCHER_LUCIDE.strokeWidth}
+          className="
+          text-black
+          dark:text-gray-300
+          "
         />
       ),
       handleTheme: handleSystemMode,
@@ -77,6 +85,10 @@ export const ThemeSwitcher = ({ className }) => {
         <Moon
           size={THEME_SWITCHER_LUCIDE.size}
           strokeWidth={THEME_SWITCHER_LUCIDE.strokeWidth}
+          className="
+          text-black
+          dark:text-gray-300
+          "
         />
       ),
       handleTheme: handleDarkMode,
@@ -89,7 +101,7 @@ export const ThemeSwitcher = ({ className }) => {
         className={`
       flex gap-2 p-1 rounded-full 
       
-      border-2 blue-gray-200
+      border-2 
       ${className}
       `}
       >

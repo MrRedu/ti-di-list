@@ -1,6 +1,7 @@
 import propTypes from 'prop-types'
+import Linkify from 'linkify-react'
 import { InputCheckBox } from './InputCheckBox'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 
 export const ToDo = ({
@@ -38,22 +39,23 @@ export const ToDo = ({
         >
           <InputCheckBox handleIsCompleted={handleIsCompleted} id={id} />
 
-          <div className="w-full flex justify-between">
+          <div className="flex w-full justify-between">
             <label
               htmlFor={id}
               className="
               flex flex-col justify-center
-              w-fit
-
-              line-clamp-1
-              
-              mr-6
+              overflow-hidden
+              break-all whitespace-normal
               "
             >
               <span
-                className={`leading-none line-clamp-1
+                className={`
+                ${isCompleted ? 'line-through' : ''}
+                leading-none line-clamp-1
 
-            ${isCompleted ? 'line-through' : ''}`}
+                `}
+                // text-black
+                // dark:text-gray-300
               >
                 {title}
               </span>
@@ -62,14 +64,18 @@ export const ToDo = ({
               )}
             </label>
             <div className="flex justify-center items-center ">
-              <button onClick={handleShowDescription} className="p-2 ">
-                <ChevronDown
-                  className={`
+              <button onClick={() => handleDelete(id)} className="p-2">
+                <Trash2 />
+              </button>
+              {description && (
+                <button onClick={handleShowDescription} className="p-2">
+                  <ChevronDown
+                    className={`
                 ${showDescription ? 'rotate-180' : ''}
                 `}
-                  // transition-all duration-300
-                />
-              </button>
+                  />
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -81,7 +87,6 @@ export const ToDo = ({
               className={`
             relative -top-3
             flex flex-col 
-            mb-1 
 
             shadow-lg
             rounded rounded-t-none
@@ -93,12 +98,22 @@ export const ToDo = ({
               <div className="p-6 pt-2">
                 <p
                   className="
-                relative top-1 
+                  break-all whitespace-normal
+               
                 text-base font-light leading-relaxed antialiased
+                
                 text-gray-500
                 "
                 >
-                  {description}
+                  <Linkify
+                    options={{
+                      target: '_blank',
+                      className:
+                        'text-gray-400 hover:text-gray-500 hover:underline ',
+                    }}
+                  >
+                    {description}
+                  </Linkify>
                 </p>
               </div>
             </div>
