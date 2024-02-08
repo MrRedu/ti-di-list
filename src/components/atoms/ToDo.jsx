@@ -49,9 +49,13 @@ export const ToDo = ({
               "
             >
               <span
-                className={`leading-none line-clamp-1
+                className={`
+                ${isCompleted ? 'line-through' : ''}
+                leading-none line-clamp-1
 
-            ${isCompleted ? 'line-through' : ''}`}
+                `}
+                // text-black
+                // dark:text-gray-300
               >
                 {title}
               </span>
@@ -60,13 +64,15 @@ export const ToDo = ({
               )}
             </label>
             <div className="flex justify-center items-center ">
-              <button onClick={handleShowDescription} className="p-2">
-                <ChevronDown
-                  className={`
+              {description && (
+                <button onClick={handleShowDescription} className="p-2">
+                  <ChevronDown
+                    className={`
                 ${showDescription ? 'rotate-180' : ''}
                 `}
-                />
-              </button>
+                  />
+                </button>
+              )}
             </div>
           </div>
         </div>

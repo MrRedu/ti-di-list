@@ -65,7 +65,17 @@ export const WeatherWidget = () => {
   return (
     <>
       {weather && (
-        <Section className="w-full md:w-1/2 flex flex-col pb-12 md:py-12  md:items-end">
+        <Section
+          className="
+        w-full md:w-1/2 
+        flex flex-col 
+        md:items-end
+        pb-12 md:py-12
+
+        text-black
+        dark:text-gray-300
+        "
+        >
           <HelpText className="flex gap-2">
             <span>{dateFormatted}</span>
             <span>{timeFormatted}</span>

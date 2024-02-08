@@ -7,6 +7,9 @@ export const Header = () => {
     px-8 sm:px-12 
         
     border-b-2
+
+    text-black
+    dark:text-gray-300
     "
     >
       <div className="w-[1280px]">
