@@ -10,20 +10,20 @@ export const Layout = ({ children }) => {
     <>
       <Header />
       <ToasterSonner />
+      <div
+        className="
+      min-h-[calc(100dvh-8rem)]
+      w-full
+      "
+      >
+        <main className="max-w-[1280px] m-auto">{children}</main>
+      </div>
       <ThemeSwitcher
         className="
       absolute 
-      bottom-20 right-4
+      top-4 right-8 md:right-12
       "
       />
-      <main
-        className="
-      min-h-[calc(100dvh-8rem)]
-      max-w-[1280px]
-      "
-      >
-        {children}
-      </main>
       <Footer />
     </>
   )

@@ -5,7 +5,7 @@ export const Footer = () => {
     <>
       <footer
         className="
-        w-full h-16 
+        w-full h-12 
         flex items-center justify-center
         px-8 sm:px-12 
 

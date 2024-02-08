@@ -11,13 +11,13 @@ export const HelperTexts = ({ wind, pressure, humidity, visibility }) => {
     <div
       className="
   grid 
-  grid-cols-1 sm:grid-cols-2
+  grid-cols-1 md:grid-cols-2
   w-fit gap-x-4
 
-  border-l-2 sm:border-r-2 blue-gray-200
-  pl-4 sm:pr-4 sm:pl-0 sm:border-0
+  border-l-2 md:border-r-2 blue-gray-200
+  pl-4 md:pr-4 md:pl-0 md:border-0
 
-  sm:text-right
+  md:text-right
   "
     >
       <HelpText className="flex items-center gap-1 ">

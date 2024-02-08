@@ -43,11 +43,8 @@ export const ToDo = ({
               htmlFor={id}
               className="
               flex flex-col justify-center
-              w-fit
 
               line-clamp-1
-              
-              mr-6
               "
             >
               <span
