@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 import Linkify from 'linkify-react'
 import { InputCheckBox } from './InputCheckBox'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 
 export const ToDo = ({
@@ -64,6 +64,9 @@ export const ToDo = ({
               )}
             </label>
             <div className="flex justify-center items-center ">
+              <button onClick={() => handleDelete(id)} className="p-2">
+                <Trash2 />
+              </button>
               {description && (
                 <button onClick={handleShowDescription} className="p-2">
                   <ChevronDown
