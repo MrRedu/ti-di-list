@@ -33,7 +33,7 @@ export const ToDoList = () => {
       />
 
       {toDos.length > 0 ? (
-        <ToDos>
+        <ToDos className="pb-2 px-2">
           {toDos.map(todo => (
             <ToDo
               key={todo.id}

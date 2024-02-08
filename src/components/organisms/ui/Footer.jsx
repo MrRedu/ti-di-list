@@ -9,7 +9,7 @@ export const Footer = () => {
         flex items-center justify-center
         px-8 sm:px-12 
 
-        border-t-2 border-blue-gray-200"
+        border-t-2 border"
       >
         <div
           className="w-[1280px] flex flex-col items-center justify-between
