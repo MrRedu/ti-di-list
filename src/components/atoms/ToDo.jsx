@@ -22,11 +22,10 @@ export const ToDo = ({
     <>
       <li
         className={`${
-          isCompleted ? 'border border-transparent opacity-30' : 'border'
+          isCompleted ? 'border border-transparent opacity-30' : '     border'
         } 
-      ${showDescription ? 'border-b-0' : 'rounded'}
+      ${showDescription ? 'border-b-0' : 'shadow rounded'}
       rounded-tl rounded-tr
-      shadow
 
       flex items-center gap-2
       `}
