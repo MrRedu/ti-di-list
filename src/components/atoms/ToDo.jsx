@@ -24,7 +24,7 @@ export const ToDo = ({
         className={`${
           isCompleted ? 'border border-transparent opacity-30' : 'border'
         } 
-      ${showDescription ? '' : 'rounded'}
+      ${showDescription ? 'border-b-0' : 'rounded'}
       rounded-tl rounded-tr
       shadow
 
@@ -85,7 +85,7 @@ export const ToDo = ({
             mb-1 
 
             shadow-lg
-            rounded
+            rounded rounded-t-none
 
             border border-t-0
             text-gray-700 
