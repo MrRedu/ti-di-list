@@ -1,4 +1,5 @@
 import propTypes from 'prop-types'
+import Linkify from 'linkify-react'
 import { InputCheckBox } from './InputCheckBox'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
@@ -38,13 +39,13 @@ export const ToDo = ({
         >
           <InputCheckBox handleIsCompleted={handleIsCompleted} id={id} />
 
-          <div className="w-full flex justify-between">
+          <div className="flex w-full justify-between">
             <label
               htmlFor={id}
               className="
               flex flex-col justify-center
-
-              line-clamp-1
+              overflow-hidden
+              break-all whitespace-normal
               "
             >
               <span
@@ -59,12 +60,11 @@ export const ToDo = ({
               )}
             </label>
             <div className="flex justify-center items-center ">
-              <button onClick={handleShowDescription} className="p-2 ">
+              <button onClick={handleShowDescription} className="p-2">
                 <ChevronDown
                   className={`
                 ${showDescription ? 'rotate-180' : ''}
                 `}
-                  // transition-all duration-300
                 />
               </button>
             </div>
@@ -78,7 +78,6 @@ export const ToDo = ({
               className={`
             relative -top-3
             flex flex-col 
-            mb-1 
 
             shadow-lg
             rounded rounded-t-none
@@ -90,12 +89,22 @@ export const ToDo = ({
               <div className="p-6 pt-2">
                 <p
                   className="
-                relative top-1 
+                  break-all whitespace-normal
+               
                 text-base font-light leading-relaxed antialiased
+                
                 text-gray-500
                 "
                 >
-                  {description}
+                  <Linkify
+                    options={{
+                      target: '_blank',
+                      className:
+                        'text-gray-400 hover:text-gray-500 hover:underline ',
+                    }}
+                  >
+                    {description}
+                  </Linkify>
                 </p>
               </div>
             </div>

@@ -48,6 +48,7 @@ export const Form = ({
         value={toDo.title || ''}
         onChange={handleChange}
         inputRef={inputRef}
+        maxLength={32}
       />
       <Input
         type={'text'}
