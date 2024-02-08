@@ -22,12 +22,11 @@ export const ToDo = ({
     <>
       <li
         className={`${
-          isCompleted
-            ? 'border border-transparent opacity-30'
-            : 'border border-blue-gray-200'
+          isCompleted ? 'border border-transparent opacity-30' : 'border'
         } 
-      rounded
-      shadow-md
+      ${showDescription ? '' : 'rounded'}
+      rounded-tl rounded-tr
+      shadow
 
       flex items-center gap-2
       `}
@@ -76,7 +75,37 @@ export const ToDo = ({
           </div>
         </div>
       </li>
-      {showDescription && <p className="text-sm">{description}</p>}
+      {showDescription && (
+        <>
+          <div className="w-full ">
+            <div
+              className={`
+            relative -top-3
+            flex flex-col 
+            mb-1 
+
+            shadow-lg
+            rounded
+
+            border border-t-0
+            text-gray-700 
+          `}
+            >
+              <div className="p-6 pt-2">
+                <p
+                  className="
+                relative top-1 
+                text-base font-light leading-relaxed antialiased
+                text-gray-500
+                "
+                >
+                  {description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   )
 }

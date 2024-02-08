@@ -6,7 +6,7 @@ export const Header = () => {
     flex items-center justify-center
     px-8 sm:px-12 
         
-    border-b-2 border-blue-gray-200
+    border-b-2
     "
     >
       <div className="w-[1280px]">
