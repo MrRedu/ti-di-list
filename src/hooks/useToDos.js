@@ -4,6 +4,7 @@ import { toast } from 'sonner'
 const toDoInitialState = {
   id: '',
   title: '',
+  description: '',
   category: '',
   isCompleted: false,
 }
@@ -31,16 +32,17 @@ export function UseToDos() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const { title, category } = toDo
+    const { title, description, category } = toDo
 
     if (title.trim().length < 3) {
-      return toast.error('Please enter at least 3 characters')
+      return toast.error('Title must have at least 3 characters.')
     }
 
     setToDos(prev => [
       {
         id: self.crypto.randomUUID(),
         title,
+        description,
         category,
         isCompleted: false,
       },
@@ -51,6 +53,7 @@ export function UseToDos() {
     setToDo(prev => ({
       ...prev,
       title: '',
+      description: '',
     }))
   }
 

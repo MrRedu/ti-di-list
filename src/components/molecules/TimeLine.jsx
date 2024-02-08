@@ -10,9 +10,10 @@ const defaultObject = [
   },
 ]
 
-export const TimeLine = ({ objects = defaultObject }) => {
+export const TimeLine = ({ title, objects = defaultObject }) => {
   return (
-    <div className="w-full py-16">
+    <div className="w-full pt-6 px-6">
+      <h5 className="text-xl font-bold mb-4">{title}</h5>
       <ul className="flex flex-col w-full px-4 gap-4">
         {objects.map(item => (
           <TimeLineItem
@@ -28,5 +29,6 @@ export const TimeLine = ({ objects = defaultObject }) => {
 }
 
 TimeLine.propTypes = {
+  title: propTypes.string,
   objects: propTypes.array,
 }

@@ -34,6 +34,7 @@ export const Form = ({
     <form
       action=""
       onSubmit={e => handleOnSubmit(e)}
+      autoComplete="off"
       className="
       w-full h-auto
       flex flex-col gap-2
@@ -43,10 +44,18 @@ export const Form = ({
         type={'text'}
         name={'title'}
         id={'title'}
-        placeholder="New ToDo"
+        placeholder="Title"
         value={toDo.title || ''}
         onChange={handleChange}
         inputRef={inputRef}
+      />
+      <Input
+        type={'text'}
+        name={'description'}
+        id={'description'}
+        placeholder="Description"
+        value={toDo.description || ''}
+        onChange={handleChange}
       />
 
       <div
@@ -60,7 +69,7 @@ export const Form = ({
           className="
           h-10 w-full 
 
-      bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      bg-black text-white font-bold py-2 px-4 rounded"
         >
           Add
         </button>

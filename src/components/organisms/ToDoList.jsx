@@ -44,7 +44,7 @@ export const ToDoList = () => {
           ))}
         </ToDos>
       ) : (
-        <TimeLine objects={timeLine} />
+        <TimeLine title={`It's time to write your To-Do!`} objects={timeLine} />
       )}
     </Section>
   )
