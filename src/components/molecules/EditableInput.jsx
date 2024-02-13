@@ -1,7 +1,9 @@
-import { useDynamicTextareaSize } from '@/hooks/useDynamicTextareaSize'
-import Linkify from 'linkify-react'
 import propTypes from 'prop-types'
 import { useState, useRef } from 'react'
+import Linkify from 'linkify-react'
+import { MAX_LENGTH_INPUTS } from '@/utils/const'
+import { useDynamicTextareaSize } from '@/hooks/useDynamicTextareaSize'
+import { HelpText } from '../atoms/HelpText'
 
 export const EditableInput = ({
   className,
@@ -13,7 +15,7 @@ export const EditableInput = ({
   const [editing, setEditing] = useState(false)
   const [inputValue, setInputValue] = useState(value)
   const textareaRef = useRef(null)
-  useDynamicTextareaSize(textareaRef, inputValue, 200)
+  useDynamicTextareaSize(textareaRef, inputValue)
 
   const handleInputChange = event => {
     setInputValue(event.target.value)
@@ -38,8 +40,16 @@ export const EditableInput = ({
           className: 'underline ',
         }}
       >
-        <span className={`cursor-pointer ${className}`} onClick={handleClick}>
-          {value || 'Empty'}
+        <span
+          className={`cursor-pointer block ${className || ''}`}
+          onClick={handleClick}
+        >
+          {value ||
+            (isTextarea ? (
+              <HelpText>Empty description (click to edit)</HelpText>
+            ) : (
+              <HelpText>No title (click to edit)</HelpText>
+            ))}
         </span>
       </Linkify>
     )
@@ -58,13 +68,14 @@ export const EditableInput = ({
           onChange(inputValue)
         }}
         autoFocus
+        maxLength={MAX_LENGTH_INPUTS.description}
       />
     )
   }
 
   return (
     <input
-      className="w-full outline-none"
+      className="w-full outline-none h-4"
       type={type}
       value={inputValue}
       onChange={handleInputChange}
@@ -74,6 +85,7 @@ export const EditableInput = ({
         onChange(inputValue)
       }}
       autoFocus
+      maxLength={MAX_LENGTH_INPUTS.title}
     />
   )
 }

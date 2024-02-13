@@ -1,6 +1,7 @@
 import propTypes from 'prop-types'
 
 import { useEffect, useRef } from 'react'
+import { MAX_LENGTH_INPUTS } from '@/utils/const'
 import { Input } from '@/components/atoms/Input'
 import { SelectCategory } from './SelectCategory'
 
@@ -48,7 +49,7 @@ export const Form = ({
         value={toDo.title || ''}
         onChange={handleChange}
         inputRef={inputRef}
-        maxLength={32}
+        maxLength={MAX_LENGTH_INPUTS.title}
       />
       <Input
         type={'text'}
@@ -57,6 +58,7 @@ export const Form = ({
         placeholder="Description"
         value={toDo.description || ''}
         onChange={handleChange}
+        maxLength={MAX_LENGTH_INPUTS.description}
       />
 
       <div
