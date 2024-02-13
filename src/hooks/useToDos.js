@@ -9,7 +9,7 @@ const toDoInitialState = {
   isCompleted: false,
 }
 
-export function UseToDos() {
+export function useToDos() {
   const [toDos, setToDos] = useState([])
   const [toDo, setToDo] = useState(toDoInitialState)
 
