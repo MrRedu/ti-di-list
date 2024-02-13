@@ -1,10 +1,11 @@
 import propTypes from 'prop-types'
-import Linkify from 'linkify-react'
 import { InputCheckBox } from './InputCheckBox'
 import { ChevronDown, Trash2 } from 'lucide-react'
 import { useState } from 'react'
+import { EditableInput } from '../molecules/EditableInput'
 
 export const ToDo = ({
+  index,
   id,
   title,
   description,
@@ -12,6 +13,7 @@ export const ToDo = ({
   isCompleted,
   handleDelete,
   handleIsCompleted,
+  handleTaskChange,
 }) => {
   const [showDescription, setShowDescription] = useState(false)
 
@@ -22,12 +24,10 @@ export const ToDo = ({
   return (
     <>
       <li
-        className={`${
-          isCompleted ? 'border border-transparent opacity-30' : '     border'
-        } 
+        className={`
+      ${isCompleted ? 'border border-transparent opacity-30' : 'border'} 
       ${showDescription ? 'border-b-0' : 'shadow rounded'}
       rounded-tl rounded-tr
-
       flex items-center gap-2
       `}
       >
@@ -38,53 +38,46 @@ export const ToDo = ({
           "
         >
           <InputCheckBox handleIsCompleted={handleIsCompleted} id={id} />
-
           <div className="flex w-full justify-between">
-            <label
-              htmlFor={id}
+            <div
               className="
               flex flex-col justify-center
               overflow-hidden
               break-all whitespace-normal
               "
             >
-              <span
+              <EditableInput
                 className={`
                 ${isCompleted ? 'line-through' : ''}
                 leading-none line-clamp-1
-
                 `}
-                // text-black
-                // dark:text-gray-300
-              >
-                {title}
-              </span>
+                type="text"
+                value={title}
+                onChange={value => handleTaskChange(index, 'title', value)}
+              />
               {category && (
-                <span className="leading-none text-sm text-gray-400">{`${category}`}</span>
+                <span className="leading-none text-xs text-gray-400">{`${category}`}</span>
               )}
-            </label>
+            </div>
             <div className="flex justify-center items-center ">
               <button onClick={() => handleDelete(id)} className="p-2">
                 <Trash2 />
               </button>
-              {description && (
-                <button onClick={handleShowDescription} className="p-2">
-                  <ChevronDown
-                    className={`
+              <button onClick={handleShowDescription} className="p-2">
+                <ChevronDown
+                  className={`
                 ${showDescription ? 'rotate-180' : ''}
                 `}
-                  />
-                </button>
-              )}
+                />
+              </button>
             </div>
           </div>
         </div>
       </li>
       {showDescription && (
-        <>
-          <div className="w-full ">
-            <div
-              className={`
+        <div className="w-full">
+          <div
+            className={`
             relative -top-3
             flex flex-col 
 
@@ -94,37 +87,36 @@ export const ToDo = ({
             border border-t-0
             text-gray-700 
           `}
-            >
-              <div className="p-6 pt-2">
-                <p
-                  className="
+          >
+            <div className="p-6 pt-2">
+              <div
+                className="
                   break-all whitespace-normal
                
                 text-base font-light leading-relaxed antialiased
                 
                 text-gray-500
                 "
-                >
-                  <Linkify
-                    options={{
-                      target: '_blank',
-                      className:
-                        'text-gray-400 hover:text-gray-500 hover:underline ',
-                    }}
-                  >
-                    {description}
-                  </Linkify>
-                </p>
+              >
+                <EditableInput
+                  isTextarea
+                  type="text"
+                  value={description}
+                  onChange={value =>
+                    handleTaskChange(index, 'description', value)
+                  }
+                />
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   )
 }
 
 ToDo.propTypes = {
+  index: propTypes.number.isRequired,
   id: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
   description: propTypes.string,
@@ -132,4 +124,5 @@ ToDo.propTypes = {
   isCompleted: propTypes.bool.isRequired,
   handleDelete: propTypes.func.isRequired,
   handleIsCompleted: propTypes.func.isRequired,
+  handleTaskChange: propTypes.func.isRequired,
 }
