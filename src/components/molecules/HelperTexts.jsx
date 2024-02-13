@@ -20,7 +20,7 @@ export const HelperTexts = ({ wind, pressure, humidity, visibility }) => {
   md:text-right
   "
     >
-      <HelpText className="flex items-center gap-1 ">
+      <HelpText className="flex items-center gap-1 md:justify-end">
         <Navigation fill="#fff" className="w-4 h-4" />
         {wind.speed}m/s {convertDegreesToCardinalDirection(`${wind.deg}`)}
       </HelpText>

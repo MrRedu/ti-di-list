@@ -16,7 +16,7 @@ export const Layout = ({ children }) => {
       w-full
       "
       >
-        <main className="max-w-[1280px] m-auto">{children}</main>
+        <main className="max-w-[920px] m-auto">{children}</main>
       </div>
       <ThemeSwitcher
         className="

@@ -32,12 +32,13 @@
 }
 
 html.dark {
-    background: #080808;
+    background: #121212;
 }
 
 body {
     font-family: var(--f-main);
     margin: 0 auto;
+    /* background-color: #dbdbdb; */
 }
 
 #root {
