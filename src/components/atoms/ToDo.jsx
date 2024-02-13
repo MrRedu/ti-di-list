@@ -1,8 +1,8 @@
 import propTypes from 'prop-types'
 import { InputCheckBox } from './InputCheckBox'
-import { ChevronDown, Trash2 } from 'lucide-react'
 import { useState } from 'react'
-import { EditableInput } from '../molecules/EditableInput'
+import { EditableInput } from '@/components/molecules/EditableInput'
+import { Actions } from '@/components/molecules/Actions'
 
 export const ToDo = ({
   index,
@@ -41,6 +41,7 @@ export const ToDo = ({
           <div className="flex w-full justify-between">
             <div
               className="
+              w-full
               flex flex-col justify-center
               overflow-hidden
               break-all whitespace-normal
@@ -59,23 +60,22 @@ export const ToDo = ({
                 <span className="leading-none text-xs text-gray-400">{`${category}`}</span>
               )}
             </div>
-            <div className="flex justify-center items-center ">
-              <button onClick={() => handleDelete(id)} className="p-2">
-                <Trash2 />
-              </button>
-              <button onClick={handleShowDescription} className="p-2">
-                <ChevronDown
-                  className={`
-                ${showDescription ? 'rotate-180' : ''}
-                `}
-                />
-              </button>
-            </div>
+            <Actions
+              id={id}
+              showDescription={showDescription}
+              handleShowDescription={handleShowDescription}
+              handleDelete={handleDelete}
+            />
           </div>
         </div>
       </li>
       {showDescription && (
-        <div className="w-full">
+        <div
+          className={`
+        ${isCompleted && 'border-transparent opacity-30'} 
+        w-full
+        `}
+        >
           <div
             className={`
             relative -top-3

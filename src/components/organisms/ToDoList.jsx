@@ -21,7 +21,7 @@ export const ToDoList = () => {
   return (
     <Section
       className="flex flex-col
-      w-full md:w-1/2
+      w-full md:w-3/5
       py-12 md:pt-12
       gap-2 
       "

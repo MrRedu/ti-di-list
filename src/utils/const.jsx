@@ -43,3 +43,8 @@ export const DEFAULT_LOCATION = {
   latitude: 10.48801,
   longitude: -66.87919,
 }
+
+export const MAX_LENGTH_INPUTS = {
+  title: 32,
+  description: 320,
+}
