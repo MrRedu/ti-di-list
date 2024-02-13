@@ -75,6 +75,30 @@ export function UseToDos() {
     setToDos(newToDos)
   }
 
+  const handleTaskChange = (index, key, value) => {
+    const newToDos = [...toDos]
+    newToDos[index][key] = value
+    setToDos(newToDos)
+  }
+
+  // const handleIsCompleted = id => {
+  //   const updatedToDos = toDos.map(toDo => {
+  //     if (toDo.id === id) {
+  //       return {
+  //         ...toDo,
+  //         isCompleted: !toDo.isCompleted,
+  //       }
+  //     }
+  //     return toDo
+  //   })
+
+  //   const completedToDos = updatedToDos.filter(todo => todo.isCompleted)
+  //   const incompleteToDos = updatedToDos.filter(todo => !todo.isCompleted)
+  //   const newToDos = [...incompleteToDos, ...completedToDos]
+
+  //   setToDos(newToDos)
+  // }
+
   return {
     toDo,
     toDos,
@@ -85,5 +109,6 @@ export function UseToDos() {
     handleDelete,
     handleIsCompleted,
     handleSetCategory,
+    handleTaskChange,
   }
 }

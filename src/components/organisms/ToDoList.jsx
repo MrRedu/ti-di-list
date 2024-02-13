@@ -15,6 +15,7 @@ export const ToDoList = () => {
     handleDelete,
     handleIsCompleted,
     handleSetCategory,
+    handleTaskChange,
   } = UseToDos()
 
   return (
@@ -34,11 +35,13 @@ export const ToDoList = () => {
 
       {toDos.length > 0 ? (
         <ToDos className="pb-2">
-          {toDos.map(todo => (
+          {toDos.map((todo, index) => (
             <ToDo
               key={todo.id}
+              index={index}
               handleDelete={handleDelete}
               handleIsCompleted={handleIsCompleted}
+              handleTaskChange={handleTaskChange}
               {...todo}
             />
           ))}
