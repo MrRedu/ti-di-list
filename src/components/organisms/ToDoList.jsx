@@ -1,4 +1,4 @@
-import { UseToDos } from '@/hooks/useToDos'
+import { useToDos } from '@/hooks/useToDos'
 import { Section } from '@/components/atoms/ui/Section'
 import { ToDo } from '@/components/atoms/ToDo'
 import { Form } from '@/components/molecules/Form'
@@ -16,7 +16,7 @@ export const ToDoList = () => {
     handleIsCompleted,
     handleSetCategory,
     handleTaskChange,
-  } = UseToDos()
+  } = useToDos()
 
   return (
     <Section
