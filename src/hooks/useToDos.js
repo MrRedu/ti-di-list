@@ -3,6 +3,7 @@ import { toast } from 'sonner'
 
 const toDoInitialState = {
   id: '',
+  createdAt: '',
   title: '',
   description: '',
   category: '',
@@ -41,6 +42,7 @@ export function useToDos() {
     setToDos(prev => [
       {
         id: self.crypto.randomUUID(),
+        createdAt: Date.now(),
         title,
         description,
         category,
@@ -63,7 +65,7 @@ export function useToDos() {
   }
 
   const handleIsCompleted = id => {
-    const newToDos = toDos.map(toDo => {
+    const updatedToDos = toDos.map(toDo => {
       if (toDo.id === id) {
         return {
           ...toDo,
@@ -72,6 +74,13 @@ export function useToDos() {
       }
       return toDo
     })
+
+    const completedToDos = updatedToDos.filter(todo => todo.isCompleted)
+    const incompleteToDos = updatedToDos
+      .filter(todo => !todo.isCompleted)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    const newToDos = [...incompleteToDos, ...completedToDos]
+
     setToDos(newToDos)
   }
 
@@ -80,24 +89,6 @@ export function useToDos() {
     newToDos[index][key] = value
     setToDos(newToDos)
   }
-
-  // const handleIsCompleted = id => {
-  //   const updatedToDos = toDos.map(toDo => {
-  //     if (toDo.id === id) {
-  //       return {
-  //         ...toDo,
-  //         isCompleted: !toDo.isCompleted,
-  //       }
-  //     }
-  //     return toDo
-  //   })
-
-  //   const completedToDos = updatedToDos.filter(todo => todo.isCompleted)
-  //   const incompleteToDos = updatedToDos.filter(todo => !todo.isCompleted)
-  //   const newToDos = [...incompleteToDos, ...completedToDos]
-
-  //   setToDos(newToDos)
-  // }
 
   return {
     toDo,

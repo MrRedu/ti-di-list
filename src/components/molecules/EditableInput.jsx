@@ -46,9 +46,9 @@ export const EditableInput = ({
         >
           {value ||
             (isTextarea ? (
-              <HelpText>Empty description (click to edit)</HelpText>
+              <HelpText>Empty description (click to add)</HelpText>
             ) : (
-              <HelpText>No title (click to edit)</HelpText>
+              <HelpText>No title (click to add)</HelpText>
             ))}
         </span>
       </Linkify>
