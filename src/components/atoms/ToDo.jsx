@@ -51,6 +51,8 @@ export const ToDo = ({
                 className={`
                 ${isCompleted ? 'line-through' : ''}
                 leading-none line-clamp-1
+
+                dark:text-white
                 `}
                 type="text"
                 value={title}

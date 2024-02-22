@@ -9,12 +9,13 @@ export const Actions = ({
   return (
     <div className="flex justify-center items-center ">
       <button onClick={() => handleDelete(id)} className="p-2">
-        <Trash2 />
+        <Trash2 className="text-black dark:text-white" />
       </button>
       <button onClick={handleShowDescription} className="p-2">
         <ChevronDown
           className={`
       ${showDescription ? 'rotate-180' : ''}
+      text-black dark:text-white
       `}
         />
       </button>

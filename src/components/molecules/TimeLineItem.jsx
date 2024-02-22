@@ -3,10 +3,12 @@ export const TimeLineItem = ({ icon, title, description }) => {
   return (
     <li className="relative flex flex-col">
       <div className="flex items-center gap-4">
-        <span className="relative z-[2] w-max flex-shrink-0 overflow-hidden rounded-full bg-black p-2 text-white">
+        <span className="relative z-[2] w-max flex-shrink-0 overflow-hidden rounded-full bg-black p-2 text-white dark:bg-white dark:text-black">
           {icon}
         </span>
-        <h4 className="block text-base antialiased font-semibold">{title}</h4>
+        <h4 className="block text-base antialiased font-semibold dark:text-white">
+          {title}
+        </h4>
       </div>
       <div className="flex gap-12">
         <span className="flex-shrink-0 invisible h-full pointer-events-none"></span>

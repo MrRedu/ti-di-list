@@ -18,15 +18,14 @@ const Button = ({ children, onClick, className }) => {
 }
 
 export const ThemeSwitcher = ({ className }) => {
-  // const getSystemTheme = () => {
-  //   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  //     return 'dark'
-  //   } else {
-  //     return 'light'
-  //   }
-  // }
-  // const [theme, setTheme] = useState(getSystemTheme)
-  const [theme, setTheme] = useState('light')
+  const getSystemTheme = () => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    } else {
+      return 'light'
+    }
+  }
+  const [theme, setTheme] = useState(getSystemTheme)
 
   useEffect(() => {
     if (theme === 'dark') {

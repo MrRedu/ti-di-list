@@ -2,7 +2,7 @@ import { Section } from './Section'
 
 export const Loader = () => {
   return (
-    <Section>
+    <Section className="grid place-content-center">
       <div className="w-full flex items-center justify-center" role="status">
         <svg
           aria-hidden="true"
