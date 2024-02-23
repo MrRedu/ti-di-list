@@ -18,7 +18,7 @@ export const ActualWeather = ({
   visibility,
 }) => {
   return (
-    <>
+    <div className="flex flex-col md:items-end">
       <HelpText className="flex gap-2">
         <span>{date}</span>
         <span>{time}</span>
@@ -37,7 +37,7 @@ export const ActualWeather = ({
         pressure={pressure}
         visibility={visibility}
       />
-    </>
+    </div>
   )
 }
 

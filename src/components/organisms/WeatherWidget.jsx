@@ -43,16 +43,15 @@ export const WeatherWidget = () => {
 
   if (loading) return <Loader />
 
-  console.table({ weather, forecastWeather })
+  // console.table({ forecastWeather })
 
   return (
     <>
-      {weather && (
+      {weather && forecastWeather && (
         <Section
           className="
-        w-full md:w-2/5 
-        flex flex-col 
-        md:items-end
+        w-full md:w-1/2 
+        flex flex-col justify-between gap-4
         pb-12 md:py-12
 
         text-black
@@ -73,7 +72,11 @@ export const WeatherWidget = () => {
             pressure={weather.main.pressure}
             visibility={weather.visibility}
           />
-          <ForecastWeather />
+          <ForecastWeather
+            countryCode={forecastWeather.city.country}
+            cityName={forecastWeather.city.name}
+            forecastWeather={forecastWeather.list.slice(0, 10)}
+          />
         </Section>
       )}
     </>
