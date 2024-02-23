@@ -4,7 +4,7 @@ export const InputCheckBox = ({ id, handleIsCompleted }) => {
     <div className="inline-flex items-center">
       <label
         className="relative flex items-center p-3 rounded-full cursor-pointer"
-        htmlFor="teal"
+        htmlFor={id}
       >
         <input
           type="checkbox"
