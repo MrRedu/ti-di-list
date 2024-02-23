@@ -1,13 +1,12 @@
-import { capitalizeString, kelvinToCelsius } from '@/utils/utils'
+import { kelvinToCelsius } from '@/utils/utils'
 
 import useLocation from '@/hooks/useLocation'
 import { useWeather } from '@/hooks/useWeather'
 
-import { HelpText } from '@/components/atoms/HelpText'
 import { Section } from '@/components/atoms/ui/Section'
-import { HelperTexts } from '@/components/molecules/HelperTexts'
-import { Temperature } from '@/components/molecules/Temperature'
+
 import { Loader } from '@/components/atoms/ui/Loader'
+import { ActualWeather } from './ActualWeather'
 
 const today = new Date()
 
@@ -56,31 +55,15 @@ export const WeatherWidget = () => {
         dark:text-gray-300
         "
         >
-          {/* <Input placeholder="Search city" /> */}
-          <HelpText className="flex gap-2">
-            <span>{dateFormatted}</span>
-            <span>{timeFormatted}</span>
-          </HelpText>
-
-          <h2 className="text-2xl font-bold">
-            {weather.name}, {weather.sys.country}
-          </h2>
-
-          <Temperature
-            icon={weather.weather[0].icon}
+          <ActualWeather
+            date={dateFormatted}
+            time={timeFormatted}
+            cityName={weather.name}
+            countryCode={weather.sys.country}
+            iconTemperature={weather.weather[0].icon}
             temperature={kelvinToCelsius(weather.main.temp)}
-          />
-
-          <div className="flex gap-2 ">
-            <p className="font-bold">
-              Feels like {kelvinToCelsius(weather.main.feels_like)}°C.
-            </p>
-            <p className="font-bold">
-              {capitalizeString(weather.weather[0].description)}.
-            </p>
-          </div>
-
-          <HelperTexts
+            feelsLike={kelvinToCelsius(weather.main.feels_like)}
+            descriptionTemperature={weather.weather[0].description}
             wind={weather.wind}
             humidity={weather.main.humidity}
             pressure={weather.main.pressure}
