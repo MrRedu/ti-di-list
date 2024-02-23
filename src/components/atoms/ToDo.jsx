@@ -66,6 +66,7 @@ export const ToDo = ({
               id={id}
               showDescription={showDescription}
               handleShowDescription={handleShowDescription}
+              title={title}
               handleDelete={handleDelete}
             />
           </div>

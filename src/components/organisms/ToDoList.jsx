@@ -16,6 +16,7 @@ export const ToDoList = () => {
     handleIsCompleted,
     handleSetCategory,
     handleTaskChange,
+    removeAllToDosLocalStorage,
   } = useToDos()
 
   return (
@@ -45,6 +46,14 @@ export const ToDoList = () => {
               {...todo}
             />
           ))}
+          {toDos.length > 5 && (
+            <button
+              className="text-sm text-red-500"
+              onClick={removeAllToDosLocalStorage}
+            >
+              Remove all
+            </button>
+          )}
         </ToDos>
       ) : (
         <TimeLine title={`It's time to write your To-Do!`} objects={timeLine} />
