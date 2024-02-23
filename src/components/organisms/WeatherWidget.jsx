@@ -1,12 +1,13 @@
 import { kelvinToCelsius } from '@/utils/utils'
 
 import useLocation from '@/hooks/useLocation'
-import { useWeather } from '@/hooks/useWeather'
+import { useWeather, useForecastWeather } from '@/hooks/useWeather'
 
 import { Section } from '@/components/atoms/ui/Section'
 
 import { Loader } from '@/components/atoms/ui/Loader'
 import { ActualWeather } from './ActualWeather'
+import { ForecastWeather } from './ForecastWeather'
 
 const today = new Date()
 
@@ -38,8 +39,11 @@ export const WeatherWidget = () => {
     // error,
   } = useLocation()
   const { weather } = useWeather({ latitude, longitude })
+  const { forecastWeather } = useForecastWeather({ latitude, longitude })
 
   if (loading) return <Loader />
+
+  console.table({ weather, forecastWeather })
 
   return (
     <>
@@ -69,6 +73,7 @@ export const WeatherWidget = () => {
             pressure={weather.main.pressure}
             visibility={weather.visibility}
           />
+          <ForecastWeather />
         </Section>
       )}
     </>
