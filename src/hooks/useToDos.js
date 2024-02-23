@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'sonner'
+import { useLocalStorage } from './useLocalStorage'
 
 const toDoInitialState = {
   id: '',
@@ -11,8 +12,9 @@ const toDoInitialState = {
 }
 
 export function useToDos() {
-  const [toDos, setToDos] = useState([])
   const [toDo, setToDo] = useState(toDoInitialState)
+  const [toDosLS, setToDosLS, removeToDosLS] = useLocalStorage('toDos', [])
+  const [toDos, setToDos] = useState(toDosLS)
 
   const handleChange = e => {
     e.preventDefault()
@@ -59,8 +61,9 @@ export function useToDos() {
     }))
   }
 
-  const handleDelete = id => {
+  const handleDelete = (id, title) => {
     const newToDos = toDos.filter(toDo => toDo.id !== id)
+    toast.success(`${title} deleted!`)
     setToDos(newToDos)
   }
 
@@ -90,6 +93,15 @@ export function useToDos() {
     setToDos(newToDos)
   }
 
+  const removeAllToDosLocalStorage = () => {
+    removeToDosLS()
+    setToDos([])
+  }
+
+  useEffect(() => {
+    setToDosLS(toDos || [])
+  }, [toDos])
+
   return {
     toDo,
     toDos,
@@ -101,5 +113,6 @@ export function useToDos() {
     handleIsCompleted,
     handleSetCategory,
     handleTaskChange,
+    removeAllToDosLocalStorage,
   }
 }

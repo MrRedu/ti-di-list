@@ -71,8 +71,12 @@ export const Form = ({
         <button
           className="
           h-10 w-full 
+          font-bold py-2 px-4 rounded
 
-      bg-black text-white font-bold py-2 px-4 rounded"
+        bg-black text-white
+        dark:text-black dark:bg-white
+        "
+          type="submit"
         >
           Add
         </button>

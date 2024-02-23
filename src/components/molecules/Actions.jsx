@@ -5,16 +5,18 @@ export const Actions = ({
   showDescription,
   handleShowDescription,
   handleDelete,
+  title,
 }) => {
   return (
     <div className="flex justify-center items-center ">
-      <button onClick={() => handleDelete(id)} className="p-2">
-        <Trash2 />
+      <button onClick={() => handleDelete(id, title)} className="p-2">
+        <Trash2 className="text-black dark:text-white" />
       </button>
       <button onClick={handleShowDescription} className="p-2">
         <ChevronDown
           className={`
       ${showDescription ? 'rotate-180' : ''}
+      text-black dark:text-white
       `}
         />
       </button>
@@ -26,4 +28,5 @@ Actions.propTypes = {
   showDescription: propTypes.bool.isRequired,
   handleShowDescription: propTypes.func.isRequired,
   handleDelete: propTypes.func.isRequired,
+  title: propTypes.string.isRequired,
 }
