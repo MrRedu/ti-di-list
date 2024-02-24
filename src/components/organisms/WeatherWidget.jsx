@@ -75,7 +75,7 @@ export const WeatherWidget = () => {
           <ForecastWeather
             countryCode={forecastWeather.city.country}
             cityName={forecastWeather.city.name}
-            forecastWeather={forecastWeather.list.slice(0, 10)}
+            forecastWeather={forecastWeather.list}
           />
         </>
       )}

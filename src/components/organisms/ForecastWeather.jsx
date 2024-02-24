@@ -1,16 +1,48 @@
 import { kelvinToCelsius } from '@/utils/utils'
 import propTypes from 'prop-types'
 import { Temperature } from '../molecules/Temperature'
-export const ForecastWeather = ({ countryCode, cityName, forecastWeather }) => {
+export const ForecastWeather = ({ forecastWeather }) => {
+  const averageDailyTemperature = forecastWeather => {
+    return (
+      forecastWeather.map(({ main }) => main.temp).reduce((a, b) => a + b, 0) /
+      forecastWeather.length
+    )
+  }
+
+  // Función para separar los climas por día
+  const separateForecastListByDay = weatherData => {
+    const daysData = []
+    const numDays = Math.ceil(weatherData.length / 8)
+
+    for (let i = 0; i < numDays; i++) {
+      const startIndex = i * 8
+      const endIndex = Math.min(startIndex + 8, weatherData.length)
+      const dailyWeather = weatherData.slice(startIndex, endIndex)
+      daysData.push(dailyWeather)
+    }
+
+    return daysData
+  }
+
+  const weatherByDay = separateForecastListByDay(forecastWeather)
+  const averageWeatherPerDayInKelvin = weatherByDay.map(averageDailyTemperature)
+  const averageWeatherPerDayInCelsius = averageWeatherPerDayInKelvin.map(day =>
+    kelvinToCelsius(day)
+  )
+
+  // console.log(averageWeatherPerDayInCelsius)
+
   return (
     <div
       className="outline outline-1 outline-red-800 
-      w-full"
+      w-full 
+      
+      "
     >
-      {/* <p>
-        <span>{countryCode}</span> / <span>{cityName}</span>
-      </p> */}
-      <div className="flex gap-4 overflow-y-auto">
+      <div
+        className="
+      flex gap-4 overflow-y-auto"
+      >
         {forecastWeather.map(({ dt_txt, main, weather }) => (
           <div
             key={dt_txt}
@@ -34,7 +66,5 @@ export const ForecastWeather = ({ countryCode, cityName, forecastWeather }) => {
 }
 
 ForecastWeather.propTypes = {
-  countryCode: propTypes.string,
-  cityName: propTypes.string,
   forecastWeather: propTypes.array,
 }
