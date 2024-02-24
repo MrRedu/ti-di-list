@@ -46,18 +46,18 @@ export const WeatherWidget = () => {
   // console.table({ forecastWeather })
 
   return (
-    <>
-      {weather && forecastWeather && (
-        <Section
-          className="
-        w-full md:w-1/2 
+    <Section
+      className="
+        w-full md:w-1/2
         flex flex-col justify-between gap-4
         pb-12 md:py-12
 
         text-black
         dark:text-gray-300
         "
-        >
+    >
+      {weather && forecastWeather && (
+        <>
           <ActualWeather
             date={dateFormatted}
             time={timeFormatted}
@@ -77,8 +77,8 @@ export const WeatherWidget = () => {
             cityName={forecastWeather.city.name}
             forecastWeather={forecastWeather.list.slice(0, 10)}
           />
-        </Section>
+        </>
       )}
-    </>
+    </Section>
   )
 }
