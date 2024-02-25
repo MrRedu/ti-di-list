@@ -69,7 +69,7 @@ export const ForecastWeather = ({ forecastWeather }) => {
 
   return (
     <div className="w-full">
-      <h3 className="text-xl font-bold text-left md:text-right">
+      <h3 className="text-xl font-bold text-left md:text-right mb-2">
         5 days Forecast
       </h3>
       <div

@@ -30,8 +30,8 @@ export const WeatherWidget = () => {
     <Section
       className="
         w-full md:w-1/2
-        flex flex-col gap-2
-        pb-12 md:py-12
+        flex flex-col gap-4
+        pb-12 md:py-12 
 
         text-black
         dark:text-gray-300
