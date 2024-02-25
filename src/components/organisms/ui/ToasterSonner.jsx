@@ -15,6 +15,7 @@ export const ToasterSonner = () => {
         },
       }}
       // theme="light"
+      closeButton
       position="bottom-center"
     />
   )

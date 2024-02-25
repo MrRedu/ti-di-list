@@ -6,7 +6,7 @@ import {
   metersToKilometers,
 } from '@/utils/utils'
 
-export const HelperTexts = ({ wind, pressure, humidity, visibility }) => {
+export const StatsWeather = ({ wind, pressure, humidity, visibility }) => {
   return (
     <div
       className="
@@ -30,7 +30,7 @@ export const HelperTexts = ({ wind, pressure, humidity, visibility }) => {
     </div>
   )
 }
-HelperTexts.propTypes = {
+StatsWeather.propTypes = {
   wind: propTypes.object,
   pressure: propTypes.number,
   humidity: propTypes.number,
