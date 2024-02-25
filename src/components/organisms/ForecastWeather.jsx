@@ -1,64 +1,88 @@
-import { kelvinToCelsius } from '@/utils/utils'
 import propTypes from 'prop-types'
-import { Temperature } from '../molecules/Temperature'
-export const ForecastWeather = ({ forecastWeather }) => {
-  const averageDailyTemperature = forecastWeather => {
-    return (
-      forecastWeather.map(({ main }) => main.temp).reduce((a, b) => a + b, 0) /
-      forecastWeather.length
-    )
-  }
+import { DailyForecast } from './DailyForecast'
+import { kelvinToCelsius } from '@/utils/utils'
 
-  // Función para separar los climas por día
-  const separateForecastListByDay = weatherData => {
-    const daysData = []
-    const numDays = Math.ceil(weatherData.length / 8)
+const splitArrayByDay = arr => {
+  const result = []
+  let currentDay = null
+  let tempArr = []
 
-    for (let i = 0; i < numDays; i++) {
-      const startIndex = i * 8
-      const endIndex = Math.min(startIndex + 8, weatherData.length)
-      const dailyWeather = weatherData.slice(startIndex, endIndex)
-      daysData.push(dailyWeather)
+  arr.forEach(obj => {
+    const day = obj.dt_txt.split(' ')[0]
+
+    if (day !== currentDay) {
+      if (tempArr.length > 0) {
+        result.push(tempArr)
+        tempArr = []
+      }
+      currentDay = day
     }
 
-    return daysData
+    tempArr.push(obj)
+  })
+
+  if (tempArr.length > 0) {
+    result.push(tempArr)
   }
 
-  const weatherByDay = separateForecastListByDay(forecastWeather)
-  const averageWeatherPerDayInKelvin = weatherByDay.map(averageDailyTemperature)
-  const averageWeatherPerDayInCelsius = averageWeatherPerDayInKelvin.map(day =>
-    kelvinToCelsius(day)
-  )
+  return result
+}
 
-  // console.log(averageWeatherPerDayInCelsius)
+export const ForecastWeather = ({ forecastWeather }) => {
+  const forecastWeatherSplitByDay = splitArrayByDay(forecastWeather)
+
+  const forecastByDay = forecastWeatherSplitByDay.map(day => {
+    const date = day[0].dt_txt
+
+    const minTemp = day
+      .map(obj => obj.main.temp_min)
+      .reduce((a, b) => Math.min(a, b))
+
+    const maxTemp = day
+      .map(obj => obj.main.temp_max)
+      .reduce((a, b) => Math.max(a, b))
+
+    const stageOfTheDay = (array, hour) => {
+      return array
+        .filter(obj => {
+          return obj.dt_txt.includes(hour)
+        })
+        .map(obj => obj.main.temp)
+    }
+
+    return {
+      date,
+      minMaxTemp: {
+        min: kelvinToCelsius(minTemp, 0),
+        max: kelvinToCelsius(maxTemp, 0),
+      },
+      stagesOfTheDay: {
+        morningTemperature: stageOfTheDay(day, '06:00:00')[0] || null,
+        afternoonTemperature: stageOfTheDay(day, '12:00:00')[0] || null,
+        eveningTemperature: stageOfTheDay(day, '18:00:00')[0] || null,
+        nightTemperature: stageOfTheDay(day, '21:00:00')[0] || null,
+      },
+    }
+  })
+
+  console.log({ forecastByDay })
 
   return (
-    <div
-      className="outline outline-1 outline-red-800 
-      w-full 
-      
-      "
-    >
+    <div className="w-full">
+      <h3 className="text-xl font-bold text-left md:text-right">
+        5 days Forecast
+      </h3>
       <div
-        className="
-      flex gap-4 overflow-y-auto"
+        className="flex flex-col gap-2
+    max-h-[calc(100vh-28rem)] overflow-y-auto"
       >
-        {forecastWeather.map(({ dt_txt, main, weather }) => (
-          <div
-            key={dt_txt}
-            className="flex flex-col gap-2 min-w-[200px] items-center"
-          >
-            <p>
-              <span>{new Date(dt_txt).toLocaleString()}</span>
-            </p>
-            {/* <p>
-              temp: <span>{kelvinToCelsius(main.temp)}</span>
-            </p> */}
-            <Temperature
-              icon={weather[0].icon}
-              temperature={kelvinToCelsius(main.temp)}
-            />
-          </div>
+        {forecastByDay.map(day => (
+          <DailyForecast
+            key={day.date}
+            today={new Date(day.date)}
+            minMaxTemp={day.minMaxTemp}
+            stagesOfTheDay={day.stagesOfTheDay}
+          />
         ))}
       </div>
     </div>
