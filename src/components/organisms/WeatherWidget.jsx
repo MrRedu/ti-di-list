@@ -1,4 +1,4 @@
-import { kelvinToCelsius } from '@/utils/utils'
+import { FormatDate, FormatTime, kelvinToCelsius } from '@/utils/utils'
 
 import useLocation from '@/hooks/useLocation'
 import { useWeather, useForecastWeather } from '@/hooks/useWeather'
@@ -10,27 +10,8 @@ import { ActualWeather } from './ActualWeather'
 import { ForecastWeather } from './ForecastWeather'
 
 const today = new Date()
-
-const optionsToDate = {
-  weekday: 'long',
-  month: 'long',
-  day: 'numeric',
-}
-
-const optionsToTime = {
-  hour: 'numeric',
-  minute: 'numeric',
-}
-
-const browserLanguages = navigator.languages
-const FormatDate = (language, date) =>
-  new Intl.DateTimeFormat(language, optionsToDate).format(date)
-
-const FormatTime = (language, date) =>
-  new Intl.DateTimeFormat(language, optionsToTime).format(date)
-
-const dateFormatted = FormatDate(browserLanguages, today)
-const timeFormatted = FormatTime(browserLanguages, today)
+const dateFormatted = FormatDate({ date: today })
+const timeFormatted = FormatTime({ date: today })
 
 export const WeatherWidget = () => {
   const {
@@ -49,7 +30,7 @@ export const WeatherWidget = () => {
     <Section
       className="
         w-full md:w-1/2
-        flex flex-col justify-between gap-4
+        flex flex-col gap-2
         pb-12 md:py-12
 
         text-black
