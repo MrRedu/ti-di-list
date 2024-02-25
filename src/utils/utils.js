@@ -6,9 +6,11 @@ export const metersToKilometers = number => (number / 1000).toFixed(1)
 // This variable is used to convert Kelvin to Celsius
 const KELVIN_ZERO_TO_CELSIUS = 273.15
 
-export const kelvinToCelsius = kelvin => {
+export const kelvinToCelsius = (kelvin, notation = 1) => {
+  if (kelvin === null || kelvin === undefined || isNaN(kelvin)) return 'X'
+
   const celsius = kelvin - KELVIN_ZERO_TO_CELSIUS
-  return celsius.toFixed(1)
+  return celsius.toFixed(notation)
 }
 
 // const TEMPERATURE_FAHRENHEIT = (TEMPERATURE_CELSIUS * (9 / 5) + 32).toFixed(1)
@@ -49,3 +51,26 @@ export const convertDegreesToCardinalDirection = angle => {
   // Now we can return it
   return directions[section]
 }
+
+const optionsToTime = {
+  hour: 'numeric',
+  minute: 'numeric',
+}
+const optionsToDate = {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+}
+const browserLanguages = navigator.languages
+
+export const FormatDate = ({
+  language = browserLanguages,
+  date,
+  options = optionsToDate,
+}) => new Intl.DateTimeFormat(language, options).format(date)
+
+export const FormatTime = ({
+  language = browserLanguages,
+  date,
+  options = optionsToTime,
+}) => new Intl.DateTimeFormat(language, options).format(date)
