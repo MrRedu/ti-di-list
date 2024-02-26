@@ -3,6 +3,7 @@ import proTypes from 'prop-types'
 import { THEME_SWITCHER_LUCIDE } from '@/libs/lucide'
 import { Laptop, Moon, Sun } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const Button = ({ children, onClick, className }) => {
   return (
@@ -25,7 +26,12 @@ export const ThemeSwitcher = ({ className }) => {
       return 'light'
     }
   }
-  const [theme, setTheme] = useState(getSystemTheme)
+
+  const [themeLS, setThemeLS] = useLocalStorage(
+    'theme-selected',
+    getSystemTheme()
+  )
+  const [theme, setTheme] = useState(themeLS)
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -37,15 +43,19 @@ export const ThemeSwitcher = ({ className }) => {
 
   const handleDarkMode = () => {
     setTheme('dark')
+    setThemeLS('dark')
   }
   const handleLightMode = () => {
     setTheme('light')
+    setThemeLS('light')
   }
   const handleSystemMode = () => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setTheme('dark')
+      setThemeLS('dark')
     } else {
       setTheme('light')
+      setThemeLS('light')
     }
   }
 
