@@ -1,21 +1,24 @@
-import { FormatDate, kelvinToCelsius } from '@/utils/utils'
-import { ChevronDown } from 'lucide-react'
 import propTypes from 'prop-types'
 import { useState } from 'react'
-import { StatsWeather } from '../molecules/StatsWeather'
-export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
-  const { min: minTemp, max: maxTemp } = minMaxTemp
+import { ChevronDown } from 'lucide-react'
+import { FormatDate, kelvinToCelsius } from '@/utils/utils'
+export const DailyForecast = ({
+  today,
+  minMaxTemp: { min: minTemp, max: maxTemp },
+  stagesOfTheDay,
+  stagesOfTheDayFeelsLike,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(!isOpen)
 
-
-  const optionsToDate = {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-  }
-
-  const day = FormatDate({ date: today, options: optionsToDate })
+  const day = FormatDate({
+    date: today,
+    options: {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    },
+  })
 
   return (
     <>
@@ -50,14 +53,6 @@ export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
                   The high will be {maxTemp}°C, the low will be {minTemp}°C.
                 </p>
               </div>
-            </div>
-            <div className="w-full flex md:justify-end">
-              <StatsWeather
-                wind={10}
-                pressure={300}
-                humidity={50}
-                visibility={10000}
-              />
             </div>
           </div>
           <table className="w-full text-center">
@@ -99,10 +94,38 @@ export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
               </tr>
               <tr>
                 <td className="text-left">Feels like</td>
-                <td>100°C</td>
-                <td>100°C</td>
-                <td>100°C</td>
-                <td>100°C</td>
+                <td>
+                  {stagesOfTheDayFeelsLike.morningTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.morningTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
+                <td>
+                  {stagesOfTheDayFeelsLike.afternoonTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.afternoonTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
+                <td>
+                  {stagesOfTheDayFeelsLike.eveningTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.eveningTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
+                <td>
+                  {stagesOfTheDayFeelsLike.nightTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.nightTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -118,6 +141,12 @@ DailyForecast.propTypes = {
     max: propTypes.string,
   }),
   stagesOfTheDay: propTypes.shape({
+    morningTemperature: propTypes.number,
+    afternoonTemperature: propTypes.number,
+    eveningTemperature: propTypes.number,
+    nightTemperature: propTypes.number,
+  }),
+  stagesOfTheDayFeelsLike: propTypes.shape({
     morningTemperature: propTypes.number,
     afternoonTemperature: propTypes.number,
     eveningTemperature: propTypes.number,
