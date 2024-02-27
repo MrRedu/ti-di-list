@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react'
 import { FormatDate, kelvinToCelsius } from '@/utils/utils'
 export const DailyForecast = ({
   today,
-  minMaxTemp: { min: minTemp, max: maxTemp },
+  minMaxTemp: { minTemp, maxTemp },
   stagesOfTheDay,
   stagesOfTheDayFeelsLike,
 }) => {
@@ -31,7 +31,7 @@ export const DailyForecast = ({
         </div>
         <div className="flex gap-4  items-center">
           <span>
-            {minTemp} / {maxTemp} °C
+            {kelvinToCelsius(maxTemp, 0)} / {kelvinToCelsius(minTemp, 0)}°C
           </span>
           <span>few clouds</span>
           <ChevronDown />
@@ -50,7 +50,8 @@ export const DailyForecast = ({
               <div className="flex flex-col w-full">
                 <h4 className="md:text-right">Moderate rain. Fresh Breeze.</h4>
                 <p className="md:text-right">
-                  The high will be {maxTemp}°C, the low will be {minTemp}°C.
+                  The high will be {kelvinToCelsius(maxTemp, 0)}°C, the low will
+                  be {kelvinToCelsius(minTemp, 0)}°C.
                 </p>
               </div>
             </div>
@@ -137,8 +138,8 @@ export const DailyForecast = ({
 DailyForecast.propTypes = {
   today: propTypes.instanceOf(Date),
   minMaxTemp: propTypes.shape({
-    min: propTypes.string,
-    max: propTypes.string,
+    minTemp: propTypes.number,
+    maxTemp: propTypes.number,
   }),
   stagesOfTheDay: propTypes.shape({
     morningTemperature: propTypes.number,

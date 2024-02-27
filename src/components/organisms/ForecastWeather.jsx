@@ -1,6 +1,5 @@
 import propTypes from 'prop-types'
 import { DailyForecast } from './DailyForecast'
-import { kelvinToCelsius } from '@/utils/utils'
 
 const splitArrayByDay = arr => {
   const result = []
@@ -29,10 +28,10 @@ const splitArrayByDay = arr => {
 }
 
 const minOrMaxTemp = (day, minOrMax) => {
-  if (minOrMax !== 'min') {
-    return day.map(obj => obj.main.temp_max).reduce((a, b) => Math.min(a, b))
+  if (minOrMax === 'min') {
+    return day.map(obj => obj.main.temp_min).reduce((a, b) => Math.min(a, b))
   }
-  return day.map(obj => obj.main.temp_min).reduce((a, b) => Math.max(a, b))
+  return day.map(obj => obj.main.temp_max).reduce((a, b) => Math.max(a, b))
 }
 
 const temperatureByStageOfTheDay = (array, hour) => {
@@ -57,14 +56,11 @@ export const ForecastWeather = ({ forecastWeather }) => {
   const forecastByDay = forecastWeatherSplitByDay.map(day => {
     const date = day[0].dt_txt
 
-    const minTemp = minOrMaxTemp(day, 'min')
-    const maxTemp = minOrMaxTemp(day, 'max')
-
     return {
       date,
       minMaxTemp: {
-        min: kelvinToCelsius(minTemp, 0),
-        max: kelvinToCelsius(maxTemp, 0),
+        minTemp: minOrMaxTemp(day, 'min'),
+        maxTemp: minOrMaxTemp(day, 'max'),
       },
       stagesOfTheDay: {
         morningTemperature:
