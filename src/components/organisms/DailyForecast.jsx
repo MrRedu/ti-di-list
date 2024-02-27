@@ -1,21 +1,24 @@
-import { FormatDate, kelvinToCelsius } from '@/utils/utils'
-import { ChevronDown } from 'lucide-react'
 import propTypes from 'prop-types'
 import { useState } from 'react'
-import { StatsWeather } from '../molecules/StatsWeather'
-export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
-  const { min: minTemp, max: maxTemp } = minMaxTemp
+import { ChevronDown } from 'lucide-react'
+import { FormatDate, kelvinToCelsius } from '@/utils/utils'
+export const DailyForecast = ({
+  today,
+  minMaxTemp: { minTemp, maxTemp },
+  stagesOfTheDay,
+  stagesOfTheDayFeelsLike,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(!isOpen)
 
-
-  const optionsToDate = {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-  }
-
-  const day = FormatDate({ date: today, options: optionsToDate })
+  const day = FormatDate({
+    date: today,
+    options: {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    },
+  })
 
   return (
     <>
@@ -28,7 +31,7 @@ export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
         </div>
         <div className="flex gap-4  items-center">
           <span>
-            {minTemp} / {maxTemp} °C
+            {kelvinToCelsius(maxTemp, 0)} / {kelvinToCelsius(minTemp, 0)}°C
           </span>
           <span>few clouds</span>
           <ChevronDown />
@@ -47,17 +50,10 @@ export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
               <div className="flex flex-col w-full">
                 <h4 className="md:text-right">Moderate rain. Fresh Breeze.</h4>
                 <p className="md:text-right">
-                  The high will be {maxTemp}°C, the low will be {minTemp}°C.
+                  The high will be {kelvinToCelsius(maxTemp, 0)}°C, the low will
+                  be {kelvinToCelsius(minTemp, 0)}°C.
                 </p>
               </div>
-            </div>
-            <div className="w-full flex md:justify-end">
-              <StatsWeather
-                wind={10}
-                pressure={300}
-                humidity={50}
-                visibility={10000}
-              />
             </div>
           </div>
           <table className="w-full text-center">
@@ -99,10 +95,38 @@ export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
               </tr>
               <tr>
                 <td className="text-left">Feels like</td>
-                <td>100°C</td>
-                <td>100°C</td>
-                <td>100°C</td>
-                <td>100°C</td>
+                <td>
+                  {stagesOfTheDayFeelsLike.morningTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.morningTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
+                <td>
+                  {stagesOfTheDayFeelsLike.afternoonTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.afternoonTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
+                <td>
+                  {stagesOfTheDayFeelsLike.eveningTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.eveningTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
+                <td>
+                  {stagesOfTheDayFeelsLike.nightTemperature
+                    ? kelvinToCelsius(
+                        stagesOfTheDayFeelsLike.nightTemperature,
+                        0
+                      ) + '°C'
+                    : null}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -114,10 +138,16 @@ export const DailyForecast = ({ today, minMaxTemp, stagesOfTheDay }) => {
 DailyForecast.propTypes = {
   today: propTypes.instanceOf(Date),
   minMaxTemp: propTypes.shape({
-    min: propTypes.string,
-    max: propTypes.string,
+    minTemp: propTypes.number,
+    maxTemp: propTypes.number,
   }),
   stagesOfTheDay: propTypes.shape({
+    morningTemperature: propTypes.number,
+    afternoonTemperature: propTypes.number,
+    eveningTemperature: propTypes.number,
+    nightTemperature: propTypes.number,
+  }),
+  stagesOfTheDayFeelsLike: propTypes.shape({
     morningTemperature: propTypes.number,
     afternoonTemperature: propTypes.number,
     eveningTemperature: propTypes.number,

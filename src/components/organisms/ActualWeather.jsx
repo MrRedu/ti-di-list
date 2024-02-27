@@ -2,6 +2,7 @@ import propTypes from 'prop-types'
 import { HelpText } from '../atoms/HelpText'
 import { StatsWeather } from '../molecules/StatsWeather'
 import { Temperature } from '../molecules/Temperature'
+import { capitalizeString } from '@/utils/utils'
 
 export const ActualWeather = ({
   date,
@@ -29,7 +30,7 @@ export const ActualWeather = ({
       <Temperature icon={iconTemperature} temperature={temperature} />
       <div className="flex gap-2 ">
         <p className="font-bold">Feels like {feelsLike}°C.</p>
-        <p className="font-bold">{descriptionTemperature}.</p>
+        <p className="font-bold">{capitalizeString(descriptionTemperature)}.</p>
       </div>
       <StatsWeather
         wind={wind}
