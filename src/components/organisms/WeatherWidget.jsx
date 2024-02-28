@@ -24,8 +24,6 @@ export const WeatherWidget = () => {
 
   if (loading) return <Loader />
 
-  // console.table({ forecastWeather })
-
   return (
     <Section
       className="

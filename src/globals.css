@@ -33,13 +33,23 @@
 }
 
 html.dark {
-    background: #000;
+    background-image: url('/dark-bg.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    backdrop-filter: gray(0);
+}
+
+html.dark body {
+    background: rgb(33, 33, 33);
+    background: -moz-radial-gradient(circle, rgba(33, 33, 33, 0.7) 0%, rgba(18, 18, 18, 0.91) 55%, rgba(8, 8, 8, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(33, 33, 33, 0.7) 0%, rgba(18, 18, 18, 0.91) 55%, rgba(8, 8, 8, 1) 100%);
+    background: radial-gradient(circle, rgba(33, 33, 33, 0.7) 0%, rgba(18, 18, 18, 0.91) 55%, rgba(8, 8, 8, 1) 100%);
 }
 
 body {
     font-family: var(--f-main);
     margin: 0 auto;
-    /* background-color: #dbdbdb; */
 }
 
 #root {

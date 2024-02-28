@@ -7,7 +7,7 @@ export const Temperature = ({ icon, temperature }) => {
   "
     >
       <img
-        className="w-16 h-auto"
+        className="w-16 h-auto drop-shadow-md"
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="Icon"
       />
