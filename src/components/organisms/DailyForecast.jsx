@@ -1,12 +1,12 @@
 import propTypes from 'prop-types'
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
-import { FormatDate, kelvinToCelsius } from '@/utils/utils'
+import { FormatDate, capitalizeString, kelvinToCelsius } from '@/utils/utils'
 export const DailyForecast = ({
   today,
   minMaxTemp: { minTemp, maxTemp },
   stagesOfTheDay,
-  stagesOfTheDayFeelsLike,
+  mostRepeatedIcon,
+  mostRepeatedDescriptionVal,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(!isOpen)
@@ -24,31 +24,48 @@ export const DailyForecast = ({
     <>
       <button
         onClick={handleOpen}
-        className="w-full flex justify-between items-center text-sm border shadow px-4 py-2"
+        className={`
+        w-full 
+        px-4 py-2
+        flex justify-between items-center 
+        text-sm 
+        rounded
+
+        ${isOpen ? 'shadow-none' : 'shadow '}
+        `}
       >
         <div className="flex flex-col gap-2">
           <span>{day}</span>
         </div>
-        <div className="flex gap-4  items-center">
+        <div className="flex gap-4 items-center">
           <span>
             {kelvinToCelsius(maxTemp, 0)} / {kelvinToCelsius(minTemp, 0)}°C
           </span>
-          <span>few clouds</span>
-          <ChevronDown />
         </div>
       </button>
       {isOpen && (
-        <div className="flex flex-col gap-2 text-sm">
+        <div
+          className={`flex flex-col gap-2 text-sm
+
+          relative 
+          pb-4 px-4
+          rounded
+        
+        ${isOpen ? 'shadow' : 'shadow-none'}
+        `}
+        >
           <div className="flex flex-col gap-2 align-left md:align-right">
             <div className="flex gap-4 flex-row md:flex-row-reverse">
               <img
-                className="max-w-[42px] h-auto"
-                src={`https://openweathermap.org/img/wn/01d@2x.png`}
+                className="max-w-[42px] h-auto drop-shadow-lg"
+                src={`https://openweathermap.org/img/wn/${mostRepeatedIcon}@2x.png`}
                 alt="Icon"
               />
 
               <div className="flex flex-col w-full">
-                <h4 className="md:text-right">Moderate rain. Fresh Breeze.</h4>
+                <h4 className="md:text-right font-bold text-base">
+                  {capitalizeString(mostRepeatedDescriptionVal)}.
+                </h4>
                 <p className="md:text-right">
                   The high will be {kelvinToCelsius(maxTemp, 0)}°C, the low will
                   be {kelvinToCelsius(minTemp, 0)}°C.
@@ -93,41 +110,6 @@ export const DailyForecast = ({
                     : null}
                 </td>
               </tr>
-              <tr>
-                <td className="text-left">Feels like</td>
-                <td>
-                  {stagesOfTheDayFeelsLike.morningTemperature
-                    ? kelvinToCelsius(
-                        stagesOfTheDayFeelsLike.morningTemperature,
-                        0
-                      ) + '°C'
-                    : null}
-                </td>
-                <td>
-                  {stagesOfTheDayFeelsLike.afternoonTemperature
-                    ? kelvinToCelsius(
-                        stagesOfTheDayFeelsLike.afternoonTemperature,
-                        0
-                      ) + '°C'
-                    : null}
-                </td>
-                <td>
-                  {stagesOfTheDayFeelsLike.eveningTemperature
-                    ? kelvinToCelsius(
-                        stagesOfTheDayFeelsLike.eveningTemperature,
-                        0
-                      ) + '°C'
-                    : null}
-                </td>
-                <td>
-                  {stagesOfTheDayFeelsLike.nightTemperature
-                    ? kelvinToCelsius(
-                        stagesOfTheDayFeelsLike.nightTemperature,
-                        0
-                      ) + '°C'
-                    : null}
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -147,10 +129,6 @@ DailyForecast.propTypes = {
     eveningTemperature: propTypes.number,
     nightTemperature: propTypes.number,
   }),
-  stagesOfTheDayFeelsLike: propTypes.shape({
-    morningTemperature: propTypes.number,
-    afternoonTemperature: propTypes.number,
-    eveningTemperature: propTypes.number,
-    nightTemperature: propTypes.number,
-  }),
+  mostRepeatedIcon: propTypes.string,
+  mostRepeatedDescriptionVal: propTypes.string,
 }

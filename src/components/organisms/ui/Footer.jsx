@@ -10,6 +10,7 @@ export const Footer = () => {
         px-8 py-8 sm:px-12 sm:py-0
 
         border-t-2
+        dark:border-neutral-900
         
         text-black
         dark:text-gray-300
