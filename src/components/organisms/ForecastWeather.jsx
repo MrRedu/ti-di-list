@@ -115,9 +115,6 @@ export const ForecastWeather = ({ forecastWeather }) => {
     }
   })
 
-  // console.log({ forecastWeatherSplitByDay })
-  // console.log({ forecastByDay })}
-
   return (
     <div className="w-full">
       <h3 className="text-xl font-bold text-left md:text-right mb-2">

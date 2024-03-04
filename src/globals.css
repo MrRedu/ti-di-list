@@ -32,12 +32,23 @@
     --f-main: 'Atkinson Hyperlegible', sans-serif;
 }
 
-html.dark {
-    background-image: url('/dark-bg.webp');
+html {
+    background-image: url('/light-bg.webp');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    backdrop-filter: gray(0);
+}
+
+html body {
+    background: rgb(212, 212, 212);
+    background: -moz-radial-gradient(circle, rgba(190, 190, 190, 0.6) 0%, rgba(210, 210, 210, 0.75) 55%, rgba(235, 235, 235, 0.90) 100%);
+    background: -webkit-radial-gradient(circle, rgba(190, 190, 190, 0.6) 0%, rgba(210, 210, 210, 0.75) 55%, rgba(235, 235, 235, 0.90) 100%);
+    background: radial-gradient(circle, rgba(190, 190, 190, 0.6) 0%, rgba(210, 210, 210, 0.75) 55%, rgba(235, 235, 235, 0.90) 100%);
+    backdrop-filter: blur(0.5px);
+}
+
+html.dark {
+    background-image: url('/dark-bg.webp');
 }
 
 html.dark body {

@@ -73,8 +73,9 @@ export const Form = ({
           h-10 w-full 
           font-bold py-2 px-4 rounded
 
-        bg-black text-white
-        dark:text-black dark:bg-white
+        bg-slate-950 text-slate-300
+        dark:text-slate-950 dark:bg-slate-200
+        shadow
         "
           type="submit"
         >

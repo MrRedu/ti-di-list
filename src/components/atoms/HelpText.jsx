@@ -1,6 +1,9 @@
 import propTypes from 'prop-types'
 export const HelpText = ({ children, className = '', ...props }) => (
-  <span {...props} className={`text-sm text-gray-500 ${className}`}>
+  <span
+    {...props}
+    className={`text-sm text-slate-500 dark:text-slate-400 ${className}`}
+  >
     {children}
   </span>
 )

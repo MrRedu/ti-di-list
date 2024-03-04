@@ -81,6 +81,7 @@ export const ToDo = ({
         >
           <div
             className={`
+            ${isCompleted && 'border-transparent'} 
             relative -top-3
             flex flex-col 
 
