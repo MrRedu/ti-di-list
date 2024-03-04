@@ -1,6 +1,7 @@
 import propTypes from 'prop-types'
 import { useState } from 'react'
 import { FormatDate, capitalizeString, kelvinToCelsius } from '@/utils/utils'
+import { TableTemperature } from '../molecules/TableTemperature'
 export const DailyForecast = ({
   today,
   minMaxTemp: { minTemp, maxTemp },
@@ -45,7 +46,8 @@ export const DailyForecast = ({
       </button>
       {isOpen && (
         <div
-          className={`flex flex-col gap-2 text-sm
+          onClick={handleOpen}
+          className={`flex flex-col gap-2 text-sm cursor-pointer
 
           relative 
           pb-4 px-4
@@ -73,45 +75,7 @@ export const DailyForecast = ({
               </div>
             </div>
           </div>
-          <table className="w-full text-center">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Morning</th>
-                <th>Afternoon</th>
-                <th>Evening</th>
-                <th>Night</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="text-left">Temperature</td>
-                <td>
-                  {stagesOfTheDay.morningTemperature
-                    ? kelvinToCelsius(stagesOfTheDay.morningTemperature, 0) +
-                      '°C'
-                    : null}
-                </td>
-                <td>
-                  {stagesOfTheDay.afternoonTemperature
-                    ? kelvinToCelsius(stagesOfTheDay.afternoonTemperature, 0) +
-                      '°C'
-                    : null}
-                </td>
-                <td>
-                  {stagesOfTheDay.eveningTemperature
-                    ? kelvinToCelsius(stagesOfTheDay.eveningTemperature, 0) +
-                      '°C'
-                    : null}
-                </td>
-                <td>
-                  {stagesOfTheDay.nightTemperature
-                    ? kelvinToCelsius(stagesOfTheDay.nightTemperature, 0) + '°C'
-                    : null}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <TableTemperature stagesOfTheDay={stagesOfTheDay} />
         </div>
       )}
     </>

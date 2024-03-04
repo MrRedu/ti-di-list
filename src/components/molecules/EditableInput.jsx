@@ -59,7 +59,7 @@ export const EditableInput = ({
     return (
       <textarea
         ref={textareaRef}
-        className="w-full outline-none resize-none dark:bg-black"
+        className="w-full outline-none resize-none bg-transparent"
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
@@ -75,7 +75,7 @@ export const EditableInput = ({
 
   return (
     <input
-      className="w-full outline-none h-4 dark:bg-black dark:text-white"
+      className="w-full outline-none h-4 bg-transparent dark:text-white"
       type={type}
       value={inputValue}
       onChange={handleInputChange}
