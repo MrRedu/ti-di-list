@@ -31,8 +31,8 @@ export const WeatherWidget = () => {
         flex flex-col gap-4
         pb-12 md:py-12 
 
-        text-black
-        dark:text-gray-300
+        text-slate-700
+        dark:text-slate-300
         "
     >
       {weather && forecastWeather && (

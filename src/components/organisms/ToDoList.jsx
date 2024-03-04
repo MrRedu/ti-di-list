@@ -25,6 +25,9 @@ export const ToDoList = () => {
       w-full md:w-1/2
       py-12 md:pt-12
       gap-2 
+
+      text-slate-700
+      dark:text-slate-300
       "
     >
       <Form

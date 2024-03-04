@@ -32,6 +32,7 @@ export const DailyForecast = ({
         text-sm 
         rounded
 
+
         ${isOpen ? 'shadow-none' : 'shadow '}
         `}
       >
@@ -59,7 +60,7 @@ export const DailyForecast = ({
           <div className="flex flex-col gap-2 align-left md:align-right">
             <div className="flex gap-4 flex-row md:flex-row-reverse">
               <img
-                className="max-w-[42px] h-auto drop-shadow-lg"
+                className="w-[42px] h-auto drop-shadow-lg"
                 src={`https://openweathermap.org/img/wn/${mostRepeatedIcon}@2x.png`}
                 alt="Icon"
               />
